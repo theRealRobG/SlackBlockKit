@@ -5,8 +5,9 @@
 ///   - `Actions`
 ///   - `Input`
 public struct DatePickerElement: Codable {
+    public static let type = "datepicker"
     /// The type of element. In this case `type` is always `datepicker`.
-    public let type = "datepicker"
+    public let type = Self.type
     /// An identifier for the action triggered when a menu option is selected.
     /// You can use this when you receive an interaction payload to identify the
     /// source of the action. Should be unique among all other `action_id`s in

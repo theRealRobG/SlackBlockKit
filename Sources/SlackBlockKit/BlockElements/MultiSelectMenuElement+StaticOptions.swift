@@ -6,8 +6,9 @@ public extension MultiSelectMenuElement {
     ///   - `Section`
     ///   - `Input`
     struct StaticOptions: Codable {
+        public static let type = "multi_static_select"
         /// The type of element. In this case `type` is always `multi_static_select`.
-        public let type = "multi_static_select"
+        public let type = Self.type
         /// A `plain_text` only text object that defines the placeholder text shown
         /// on the menu. Maximum length for the `text` in this field is 150 characters.
         public let placeholder: TextObject
