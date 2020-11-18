@@ -7,7 +7,7 @@
 public struct ButtonElement: Codable {
     public static let type = "button"
     /// The type of element. In this case `type` is always `button`.
-    public let type = Self.type
+    public let type: String
     /// A text object that defines the button's text. Can only be of `type: plain_text`.
     /// Maximum length for the `text` in this field is 75 characters.
     public let text: TextObject
@@ -43,6 +43,7 @@ public struct ButtonElement: Codable {
         style: ButtonStyle? = nil,
         confirm: ConfirmationDialogObject? = nil
     ) {
+        self.type = Self.type
         self.text = text
         self.actionId = actionId
         self.url = url

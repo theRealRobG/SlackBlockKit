@@ -8,7 +8,7 @@
 public struct ImageElement: Codable {
     public static let type = "image"
     /// The type of element. In this case `type` is always `image`.
-    public let type = Self.type
+    public let type: String
     /// The URL of the image to be displayed.
     public let imageUrl: String
     /// A plain-text summary of the image. This should not contain any markup.
@@ -18,6 +18,7 @@ public struct ImageElement: Codable {
         imageUrl: String,
         altText: String
     ) {
+        self.type = Self.type
         self.imageUrl = imageUrl
         self.altText = altText
     }

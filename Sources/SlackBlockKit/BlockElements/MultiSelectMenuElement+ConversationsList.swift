@@ -9,7 +9,7 @@ public extension MultiSelectMenuElement {
     struct ConversationsList: Codable {
         public static let type = "multi_conversations_select"
         /// The type of element. In this case `type` is always `multi_conversations_select`.
-        public let type = Self.type
+        public let type: String
         /// A `plain_text` only text object that defines the placeholder text shown on the
         /// menu. Maximum length for the `text` in this field is 150 characters.
         public let placeholder: TextObject
@@ -44,6 +44,7 @@ public extension MultiSelectMenuElement {
             maxSelectedItems: Int? = 1,
             filter: ConversationListsFilterObject? = nil
         ) {
+            self.type: Self.type
             self.placeholder = placeholder
             self.actionId = actionId
             self.initialConversations = initialConversations

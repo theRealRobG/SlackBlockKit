@@ -8,7 +8,7 @@ public extension MultiSelectMenuElement {
     struct UserList: Codable {
         public static let type = "multi_users_select"
         /// The type of element. In this case `type` is always `multi_users_select`.
-        public let type = Self.type
+        public let type: String
         /// A `plain_text` only text object that defines the placeholder text shown
         /// on the menu. Maximum length for the `text` in this field is 150 characters.
         public let placeholder: TextObject
@@ -33,6 +33,7 @@ public extension MultiSelectMenuElement {
             confirm: ConfirmationDialogObject? = nil,
             maxSelectedItems: Int? = 1
         ) {
+            self.type = Self.type
             self.placeholder = placeholder
             self.actionId = actionId
             self.initialUsers = initialUsers

@@ -13,7 +13,7 @@
 public struct CheckboxGroups: Codable {
     public static let type = "checkboxes"
     /// The type of element. In this case `type` is always `checkboxes`.
-    public let type = Self.type
+    public let type: String
     /// An identifier for the action triggered when the checkbox group is changed.
     /// You can use this when you receive an interaction payload to identify the
     /// source of the action. Should be unique among all other `action_id`s in the
@@ -35,6 +35,7 @@ public struct CheckboxGroups: Codable {
         initialOptions: [OptionObject]? = nil,
         confirm: ConfirmationDialogObject? = nil
     ) {
+        self.type = Self.type
         self.actionId = actionId
         self.options = options
         self.initialOptions = initialOptions
