@@ -44,7 +44,7 @@ public extension MultiSelectMenuElement {
             maxSelectedItems: Int? = 1,
             filter: ConversationListsFilterObject? = nil
         ) {
-            self.type: Self.type
+            self.type = Self.type
             self.placeholder = placeholder
             self.actionId = actionId
             self.initialConversations = initialConversations
