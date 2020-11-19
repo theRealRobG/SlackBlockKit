@@ -1,11 +1,11 @@
-/// A multi-select menu allows a user to select multiple items from a list of options.
-/// Just like regular select menus, multi-select menus also include type-ahead
-/// functionality, where a user can type a part or all of an option string to filter
-/// the list.
+/// A select menu, just as with a standard HTML `<select>` tag, creates a drop
+/// down menu with a list of options for a user to choose. The select menu also
+/// includes type-ahead functionality, where a user can type a part or all of
+/// an option string to filter the list.
 ///
-/// There are different types of multi-select menu that depend on different data
-/// sources for their lists of options.
-public enum MultiSelectMenuElement: Codable {
+/// There are different types of select menu that depend on different data sources
+/// for their lists of options.
+public enum SelectMenuElement: Codable {
     /// Menu with conversations list
     case conversationsList(ConversationsList)
     /// Menu with external data source
