@@ -7,7 +7,7 @@ public extension SelectMenuElement {
     ///   - `Actions`
     ///   - `Input`
     struct PublicChannelsList: Codable {
-        public static let type = "channels_select"
+        public static let type = BlockType.channelsSelect
         /// The type of element. In this case `type` is always `channels_select.
         public let type: String
         /// A `plain_text` only text object that defines the placeholder text shown
@@ -38,7 +38,7 @@ public extension SelectMenuElement {
             confirm: ConfirmationDialogObject?,
             responseUrlEnabled: Bool?
         ) {
-            self.type = Self.type
+            self.type = Self.type.rawValue
             self.placeholder = placeholder
             self.actionId = actionId
             self.initialChannel = initialChannel

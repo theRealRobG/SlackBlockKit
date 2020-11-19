@@ -11,7 +11,7 @@
 ///   - `Modals`
 ///   - `Messages`
 public struct CheckboxGroups: Codable {
-    public static let type = "checkboxes"
+    public static let type = BlockType.checkboxes
     /// The type of element. In this case `type` is always `checkboxes`.
     public let type: String
     /// An identifier for the action triggered when the checkbox group is changed.
@@ -35,7 +35,7 @@ public struct CheckboxGroups: Codable {
         initialOptions: [OptionObject]? = nil,
         confirm: ConfirmationDialogObject? = nil
     ) {
-        self.type = Self.type
+        self.type = Self.type.rawValue
         self.actionId = actionId
         self.options = options
         self.initialOptions = initialOptions

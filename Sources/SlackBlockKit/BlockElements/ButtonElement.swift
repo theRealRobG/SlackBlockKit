@@ -5,7 +5,7 @@
 ///   - `Section`
 ///   - `Actions`
 public struct ButtonElement: Codable {
-    public static let type = "button"
+    public static let type = BlockType.button
     /// The type of element. In this case `type` is always `button`.
     public let type: String
     /// A text object that defines the button's text. Can only be of `type: plain_text`.
@@ -43,7 +43,7 @@ public struct ButtonElement: Codable {
         style: ButtonStyle? = nil,
         confirm: ConfirmationDialogObject? = nil
     ) {
-        self.type = Self.type
+        self.type = Self.type.rawValue
         self.text = text
         self.actionId = actionId
         self.url = url

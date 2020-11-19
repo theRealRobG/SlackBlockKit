@@ -7,7 +7,7 @@ public extension SelectMenuElement {
     ///   - `Actions`
     ///   - `Input`
     struct StaticOptions: Codable {
-        public static let type = "static_select"
+        public static let type = BlockType.staticSelect
         /// The type of element. In this case `type` is always `static_select`.
         public let type: String
         /// A `plain_text` only text object that defines the placeholder text shown on
@@ -39,7 +39,7 @@ public extension SelectMenuElement {
             initialOption: OptionObject? = nil,
             confirm: ConfirmationDialogObject? = nil
         ) {
-            self.type = Self.type
+            self.type = Self.type.rawValue
             self.placeholder = placeholder
             self.actionId = actionId
             self.options = options

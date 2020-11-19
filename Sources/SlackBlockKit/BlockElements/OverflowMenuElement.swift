@@ -10,7 +10,7 @@
 ///   - `Section`
 ///   - `Actions`
 public struct OverflowMenuElement: Codable {
-    public static let type = "overflow"
+    public static let type = BlockType.overflow
     /// The type of element. In this case `type` is always `overflow`.
     public let type: String
     /// An identifier for the action triggered when a menu option is selected. You can
@@ -30,7 +30,7 @@ public struct OverflowMenuElement: Codable {
         options: [OptionObject],
         confirm: ConfirmationDialogObject? = nil
     ) {
-        self.type = Self.type
+        self.type = Self.type.rawValue
         self.actionId = actionId
         self.options = options
         self.confirm = confirm

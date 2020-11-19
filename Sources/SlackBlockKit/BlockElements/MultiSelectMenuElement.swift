@@ -20,7 +20,7 @@ public enum MultiSelectMenuElement: Codable {
     public init(from decoder: Decoder) throws {
         let type = try decoder
             .container(keyedBy: BlockTypeCodingKey.self)
-            .decode(String.self, forKey: .type)
+            .decode(BlockType.self, forKey: .type)
         
         switch type {
         case ConversationsList.type:
@@ -34,7 +34,16 @@ public enum MultiSelectMenuElement: Codable {
         case UserList.type:
             try self = .userList(UserList(from: decoder))
         default:
-            throw UnknownBlockTypeDecodingError(unknownType: type)
+            throw UnexpectedBlockTypeDecodingError(
+                unexpectedType: type,
+                expectedTypes: [
+                    .conversationsSelect,
+                    .externalSelect,
+                    .channelsSelect,
+                    .staticSelect,
+                    .usersSelect
+                ]
+            )
         }
     }
     

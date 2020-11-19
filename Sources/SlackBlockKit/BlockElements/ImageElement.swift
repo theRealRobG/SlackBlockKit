@@ -6,7 +6,7 @@
 ///   - `Section`
 ///   - `Context`
 public struct ImageElement: Codable {
-    public static let type = "image"
+    public static let type = BlockType.image
     /// The type of element. In this case `type` is always `image`.
     public let type: String
     /// The URL of the image to be displayed.
@@ -18,7 +18,7 @@ public struct ImageElement: Codable {
         imageUrl: String,
         altText: String
     ) {
-        self.type = Self.type
+        self.type = Self.type.rawValue
         self.imageUrl = imageUrl
         self.altText = altText
     }

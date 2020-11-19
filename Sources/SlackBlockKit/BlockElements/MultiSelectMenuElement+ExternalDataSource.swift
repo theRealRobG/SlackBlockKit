@@ -11,7 +11,7 @@ public extension MultiSelectMenuElement {
     ///   - `Section`
     ///   - `Input`
     struct ExternalDataSource: Codable {
-        public static let type = "multi_external_select"
+        public static let type = BlockType.multiExternalSelect
         /// The type of element. In this case `type` is always `multi_external_select`.
         public let type: String
         /// A `plain_text` only text object that defines the placeholder text shown on
@@ -46,7 +46,7 @@ public extension MultiSelectMenuElement {
             confirm: ConfirmationDialogObject? = nil,
             maxSelectedItems: Int? = 1
         ) {
-            self.type = Self.type
+            self.type = Self.type.rawValue
             self.placeholder = placeholder
             self.actionId = actionId
             self.minQueryLength = minQueryLength

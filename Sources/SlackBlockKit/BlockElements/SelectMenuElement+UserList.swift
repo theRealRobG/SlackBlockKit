@@ -7,7 +7,7 @@ public extension SelectMenuElement {
     ///   - `Actions`
     ///   - `Input`
     struct UserList: Codable {
-        public static let type = "users_select"
+        public static let type = BlockType.usersSelect
         /// The type of element. In this case `type` is always `users_select`.
         public let type: String
         /// A `plain_text` only text object that defines the placeholder text
@@ -31,7 +31,7 @@ public extension SelectMenuElement {
             initialUser: String? = nil,
             confirm: ConfirmationDialogObject? = nil
         ) {
-            self.type = Self.type
+            self.type = Self.type.rawValue
             self.placeholder = placeholder
             self.actionId = actionId
             self.initialUser = initialUser

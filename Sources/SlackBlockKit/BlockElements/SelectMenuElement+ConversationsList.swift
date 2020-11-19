@@ -7,7 +7,7 @@ public extension SelectMenuElement {
     ///   - `Actions`
     ///   - `Input`
     struct ConversationsList: Codable {
-        public static let type = "conversations_select"
+        public static let type = BlockType.conversationsSelect
         /// The type of element. In this case `type` is always `conversations_select`.
         public let type: String
         /// A `plain_text` only text object that defines the placeholder text shown on
@@ -48,7 +48,7 @@ public extension SelectMenuElement {
             responseUrlEnabled: Bool? = nil,
             filter: ConversationListsFilterObject? = nil
         ) {
-            self.type = Self.type
+            self.type = Self.type.rawValue
             self.placeholder = placeholder
             self.actionId = actionId
             self.initialConversation = initialConversation

@@ -6,7 +6,7 @@ public extension MultiSelectMenuElement {
     ///   - `Section`
     ///   - `Input`
     struct UserList: Codable {
-        public static let type = "multi_users_select"
+        public static let type = BlockType.multiUsersSelect
         /// The type of element. In this case `type` is always `multi_users_select`.
         public let type: String
         /// A `plain_text` only text object that defines the placeholder text shown
@@ -33,7 +33,7 @@ public extension MultiSelectMenuElement {
             confirm: ConfirmationDialogObject? = nil,
             maxSelectedItems: Int? = 1
         ) {
-            self.type = Self.type
+            self.type = Self.type.rawValue
             self.placeholder = placeholder
             self.actionId = actionId
             self.initialUsers = initialUsers

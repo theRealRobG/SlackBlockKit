@@ -12,7 +12,7 @@ public extension SelectMenuElement {
     ///   - `Actions`
     ///   - `Input`
     struct ExternalDataSource: Codable {
-        public static let type = "external_select"
+        public static let type = BlockType.externalSelect
         /// The type of element. In this case `type` is always `external_select`.
         public let type: String
         /// A `plain_text` only text object that defines the placeholder text shown on
@@ -43,7 +43,7 @@ public extension SelectMenuElement {
             minQueryLength: Int? = 3,
             confirm: ConfirmationDialogObject? = nil
         ) {
-            self.type = Self.type
+            self.type = Self.type.rawValue
             self.placeholder = placeholder
             self.actionId = actionId
             self.initialOption = initialOption

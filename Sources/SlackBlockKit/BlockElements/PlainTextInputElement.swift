@@ -7,7 +7,7 @@
 ///   - `Actions`
 ///   - `Input`
 public struct PlainTextInputElement: Codable {
-    public static let type = "plain_text_input"
+    public static let type = BlockType.plainTextInput
     /// The type of element. In this case `type` is always `plain_text_input`.
     public let type: String
     /// An identifier for the input value when the parent modal is submitted.
@@ -44,7 +44,7 @@ public struct PlainTextInputElement: Codable {
         maxLength: Int? = nil,
         dispatchActionConfig: DispatchActionConfiguration? = nil
     ) {
-        self.type = Self.type
+        self.type = Self.type.rawValue
         self.actionId = actionId
         self.placeholder = placeholder
         self.initialValue = initialValue
