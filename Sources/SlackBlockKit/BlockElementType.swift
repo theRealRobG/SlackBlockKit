@@ -1,4 +1,4 @@
-public enum BlockType: String, Codable {
+public enum BlockElementType: String, Codable {
     case button
     case checkboxes
     case datepicker

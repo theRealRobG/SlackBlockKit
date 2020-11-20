@@ -11,7 +11,7 @@
 ///   - `Modals`
 ///   - `Messages`
 public struct CheckboxGroups: Codable {
-    public static let type = BlockType.checkboxes
+    public static let type = BlockElementType.checkboxes
     /// The type of element. In this case `type` is always `checkboxes`.
     public let type: String
     /// An identifier for the action triggered when the checkbox group is changed.

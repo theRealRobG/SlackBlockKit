@@ -5,7 +5,7 @@
 ///   - `Actions`
 ///   - `Input`
 public struct DatePickerElement: Codable {
-    public static let type = BlockType.datepicker
+    public static let type = BlockElementType.datepicker
     /// The type of element. In this case `type` is always `datepicker`.
     public let type: String
     /// An identifier for the action triggered when a menu option is selected.

@@ -7,7 +7,7 @@
 ///   - `Actions`
 ///   - `Input`
 public struct PlainTextInputElement: Codable {
-    public static let type = BlockType.plainTextInput
+    public static let type = BlockElementType.plainTextInput
     /// The type of element. In this case `type` is always `plain_text_input`.
     public let type: String
     /// An identifier for the input value when the parent modal is submitted.

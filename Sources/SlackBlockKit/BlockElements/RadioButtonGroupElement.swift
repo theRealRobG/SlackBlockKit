@@ -11,7 +11,7 @@
 ///   - `Actions`
 ///   - `Input`
 public struct RadioButtonGroupElement: Codable {
-    public static let type = BlockType.radioButtons
+    public static let type = BlockElementType.radioButtons
     /// The type of element. In this case `type` is always `radio_buttons`.
     public let type: String
     /// An identifier for the action triggered when the radio button group is changed.

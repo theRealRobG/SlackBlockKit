@@ -9,7 +9,7 @@
 ///   - `Actions`
 ///   - `Input`
 public struct TimePickerElement: Codable {
-    public static let type = BlockType.timepicker
+    public static let type = BlockElementType.timepicker
     /// The type of element. In this case `type` is always `timepicker`.
     public let type: String
     /// An identifier for the action triggered when a time is selected. You can

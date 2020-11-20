@@ -10,7 +10,7 @@
 ///   - `Section`
 ///   - `Actions`
 public struct OverflowMenuElement: Codable {
-    public static let type = BlockType.overflow
+    public static let type = BlockElementType.overflow
     /// The type of element. In this case `type` is always `overflow`.
     public let type: String
     /// An identifier for the action triggered when a menu option is selected. You can
