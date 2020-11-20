@@ -9,7 +9,7 @@
 /// Works with block types:
 ///   - `Section`
 ///   - `Actions`
-public struct OverflowMenuElement: Codable {
+public struct OverflowMenuElement: BlockElement {
     public static let type = BlockElementType.overflow
     /// The type of element. In this case `type` is always `overflow`.
     public let type: String

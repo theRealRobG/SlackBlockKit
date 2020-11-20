@@ -5,7 +5,7 @@
 /// Works with block types:
 ///   - `Section`
 ///   - `Context`
-public struct ImageElement: Codable {
+public struct ImageElement: BlockElement {
     public static let type = BlockElementType.image
     /// The type of element. In this case `type` is always `image`.
     public let type: String

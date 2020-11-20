@@ -8,7 +8,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-public struct TimePickerElement: Codable {
+public struct TimePickerElement: BlockElement {
     public static let type = BlockElementType.timepicker
     /// The type of element. In this case `type` is always `timepicker`.
     public let type: String

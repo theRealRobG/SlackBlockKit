@@ -5,7 +5,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-struct SelectMenuPublicChannelsList: Codable {
+struct SelectMenuPublicChannelsList: BlockElement {
     public static let type = BlockElementType.channelsSelect
     /// The type of element. In this case `type` is always `channels_select.
     public let type: String

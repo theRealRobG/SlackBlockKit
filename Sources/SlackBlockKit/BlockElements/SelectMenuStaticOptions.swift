@@ -5,7 +5,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-struct SelectMenuStaticOptions: Codable {
+struct SelectMenuStaticOptions: BlockElement {
     public static let type = BlockElementType.staticSelect
     /// The type of element. In this case `type` is always `static_select`.
     public let type: String

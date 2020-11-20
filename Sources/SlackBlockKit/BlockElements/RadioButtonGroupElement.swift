@@ -10,7 +10,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-public struct RadioButtonGroupElement: Codable {
+public struct RadioButtonGroupElement: BlockElement {
     public static let type = BlockElementType.radioButtons
     /// The type of element. In this case `type` is always `radio_buttons`.
     public let type: String

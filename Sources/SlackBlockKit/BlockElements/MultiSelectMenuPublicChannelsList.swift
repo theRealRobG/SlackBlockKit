@@ -4,7 +4,7 @@
 /// Works with block types:
 ///   - `Section`
 ///   - `Input`
-struct MultiSelectMenuPublicChannelsList: Codable {
+struct MultiSelectMenuPublicChannelsList: BlockElement {
     public static let type = BlockElementType.multiChannelsSelect
     /// The type of element. In this case `type` is always `multi_channels_select`.
     public let type: String

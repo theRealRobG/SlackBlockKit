@@ -4,7 +4,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-public struct DatePickerElement: Codable {
+public struct DatePickerElement: BlockElement {
     public static let type = BlockElementType.datepicker
     /// The type of element. In this case `type` is always `datepicker`.
     public let type: String
