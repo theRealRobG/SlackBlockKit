@@ -20,7 +20,7 @@ public struct ContextBlock: LayoutBlock {
     
     public init(
         elements: [ContextBlockElement],
-        blockId: String?
+        blockId: String? = nil
     ) {
         if elements.count > 10 {
             assertionFailure("Maximum number of elements is 10.")
