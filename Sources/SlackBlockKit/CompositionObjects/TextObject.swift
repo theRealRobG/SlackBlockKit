@@ -1,8 +1,12 @@
 /// An object containing some text, formatted either as `plain_text` or using `mrkdwn`,
 /// our [Slack's] proprietary contribution to the much beloved Markdown standard.
-public struct TextObject: Codable {
+public struct TextObject: BlockElement, ContextBlockElement {
+    /// `TextObject.type` is problematic as it does not actually have a static single type like
+    /// all other `BlockElement`. Instead, for type in this scenario, it provides the default
+    /// type for the object, which is `plain_text`.
+    public static let type = BlockElementType.plainText
     /// The formatting to use for this text object. Can be one of `plain_text` or `mrkdwn`.
-    public let type: FormatType
+    public let type: String
     /// The text for the block. This field accepts any of the standard text formatting
     /// markup when `type` is `mrkdwn`.
     public let text: String
@@ -21,7 +25,7 @@ public struct TextObject: Codable {
         emoji: Bool? = nil,
         verbatim: Bool? = nil
     ) {
-        self.type = type
+        self.type = type.rawValue
         self.text = text
         self.emoji = emoji
         self.verbatim = verbatim

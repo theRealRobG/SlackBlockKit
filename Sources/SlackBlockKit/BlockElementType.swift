@@ -18,6 +18,13 @@ public enum BlockElementType: String, Codable {
     case usersSelect = "users_select"
     case timepicker
     
+    // TextObject is somewhat of an exception to the rule as it acts as both a
+    // compositional object and also as block element in its own right when being
+    // used within layout blocks. However, unlike all other block elements, it has
+    // multiple possible types. Both possible types are included in this enum.
+    case plainText = "plain_text"
+    case mrkdwn
+    
     var blockMetaType: BlockElement.Type {
         switch self {
         case .button: return ButtonElement.self
@@ -38,6 +45,7 @@ public enum BlockElementType: String, Codable {
         case .staticSelect: return SelectMenuStaticOptions.self
         case .usersSelect: return SelectMenuUserList.self
         case .timepicker: return TimePickerElement.self
+        case .plainText, .mrkdwn: return TextObject.self
         }
     }
 }
