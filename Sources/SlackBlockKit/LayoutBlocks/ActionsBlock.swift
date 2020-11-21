@@ -52,7 +52,7 @@ public struct ActionsBlock: LayoutBlock {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)
         try container.encode(elements.map(AnyBlockElement.init), forKey: .elements)
-        try container.encode(blockId, forKey: .blockId)
+        try container.encodeIfPresent(blockId, forKey: .blockId)
     }
     
     public enum CodingKeys: String, CodingKey {

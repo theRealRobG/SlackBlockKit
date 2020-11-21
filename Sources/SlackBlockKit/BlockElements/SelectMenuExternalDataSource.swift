@@ -10,7 +10,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-struct SelectMenuExternalDataSource: BlockElement, ActionsBlock {
+struct SelectMenuExternalDataSource: BlockElement, ActionsBlockElement {
     public static let type = BlockElementType.externalSelect
     /// The type of element. In this case `type` is always `external_select`.
     public let type: String
