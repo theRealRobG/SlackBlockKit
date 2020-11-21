@@ -10,7 +10,7 @@
 ///   - `Home tabs`
 ///   - `Modals`
 ///   - `Messages`
-public struct CheckboxGroups: BlockElement {
+public struct CheckboxGroups: BlockElement, ActionsBlock {
     public static let type = BlockElementType.checkboxes
     /// The type of element. In this case `type` is always `checkboxes`.
     public let type: String

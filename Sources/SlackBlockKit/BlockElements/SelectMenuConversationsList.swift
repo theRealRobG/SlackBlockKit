@@ -5,7 +5,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-struct SelectMenuConversationsList: BlockElement {
+struct SelectMenuConversationsList: BlockElement, ActionsBlock {
     public static let type = BlockElementType.conversationsSelect
     /// The type of element. In this case `type` is always `conversations_select`.
     public let type: String

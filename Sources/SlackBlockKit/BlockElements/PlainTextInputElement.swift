@@ -6,7 +6,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-public struct PlainTextInputElement: BlockElement {
+public struct PlainTextInputElement: BlockElement, ActionsBlock {
     public static let type = BlockElementType.plainTextInput
     /// The type of element. In this case `type` is always `plain_text_input`.
     public let type: String

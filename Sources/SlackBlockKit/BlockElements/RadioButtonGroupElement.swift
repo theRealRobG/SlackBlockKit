@@ -1,16 +1,11 @@
 /// A radio button group that allows a user to choose one item from a list
 /// of possible options.
 ///
-/// Radio buttons are only supported in the following app surfaces:
-///   - `Home tabs`
-///   - `Modals`
-///   - `Messages`
-///
 /// Works with block types:
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-public struct RadioButtonGroupElement: BlockElement {
+public struct RadioButtonGroupElement: BlockElement, ActionsBlock {
     public static let type = BlockElementType.radioButtons
     /// The type of element. In this case `type` is always `radio_buttons`.
     public let type: String

@@ -4,7 +4,7 @@
 /// Works with block types:
 ///   - `Section`
 ///   - `Actions`
-public struct ButtonElement: BlockElement {
+public struct ButtonElement: BlockElement, ActionsBlockElement {
     public static let type = BlockElementType.button
     /// The type of element. In this case `type` is always `button`.
     public let type: String
