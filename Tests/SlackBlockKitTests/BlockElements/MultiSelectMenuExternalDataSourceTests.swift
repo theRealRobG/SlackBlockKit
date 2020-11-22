@@ -1,6 +1,7 @@
 import SlackBlockKit
 import XCTest
 
+// https://api.slack.com/reference/block-kit/block-elements#external_multi_select__example
 private let externalDataSourceSelect = """
 {
     "action_id": "text1234",
