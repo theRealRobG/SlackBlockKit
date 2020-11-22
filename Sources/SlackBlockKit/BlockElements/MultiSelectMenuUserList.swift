@@ -30,7 +30,7 @@ struct MultiSelectMenuUserList: BlockElement, InputBlockElement, SectionBlockEle
         actionId: String,
         initialUsers: [String]? = nil,
         confirm: ConfirmationDialogObject? = nil,
-        maxSelectedItems: Int? = 1
+        maxSelectedItems: Int? = nil
     ) {
         self.type = Self.type.rawValue
         self.placeholder = placeholder

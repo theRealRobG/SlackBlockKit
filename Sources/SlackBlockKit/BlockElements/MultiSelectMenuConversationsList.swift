@@ -38,9 +38,9 @@ struct MultiSelectMenuConversationsList: BlockElement, InputBlockElement, Sectio
         placeholder: TextObject,
         actionId: String,
         initialConversations: [String]? = nil,
-        defaultToCurrentConversation: Bool? = false,
+        defaultToCurrentConversation: Bool? = nil,
         confirm: ConfirmationDialogObject? = nil,
-        maxSelectedItems: Int? = 1,
+        maxSelectedItems: Int? = nil,
         filter: ConversationListsFilterObject? = nil
     ) {
         self.type = Self.type.rawValue

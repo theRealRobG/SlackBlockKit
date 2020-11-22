@@ -39,7 +39,7 @@ public struct PlainTextInputElement: BlockElement, ActionsBlockElement, InputBlo
         actionId: String,
         placeholder: TextObject? = nil,
         initialValue: String? = nil,
-        multiline: Bool? = false,
+        multiline: Bool? = nil,
         minLength: Int? = nil,
         maxLength: Int? = nil,
         dispatchActionConfig: DispatchActionConfiguration? = nil

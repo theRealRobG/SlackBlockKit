@@ -20,7 +20,7 @@ public struct HeaderBlock: LayoutBlock {
     
     public init(
         text: TextObject,
-        blockId: String?
+        blockId: String? = nil
     ) {
         self.type = Self.type.rawValue
         self.text = text

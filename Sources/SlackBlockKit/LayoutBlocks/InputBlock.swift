@@ -37,10 +37,10 @@ public struct InputBlock: LayoutBlock {
     public init(
         label: TextObject,
         element: InputBlockElement,
-        dispatchAction: Bool? = false,
+        dispatchAction: Bool? = nil,
         blockId: String? = nil,
         hint: TextObject? = nil,
-        optional: Bool? = false
+        optional: Bool? = nil
     ) {
         self.type = Self.type.rawValue
         self.label = label

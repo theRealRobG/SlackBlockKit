@@ -40,10 +40,10 @@ struct MultiSelectMenuExternalDataSource: BlockElement, InputBlockElement, Secti
     public init(
         placeholder: TextObject,
         actionId: String,
-        minQueryLength: Int? = 3,
+        minQueryLength: Int? = nil,
         initialOptions: [OptionObject]? = nil,
         confirm: ConfirmationDialogObject? = nil,
-        maxSelectedItems: Int? = 1
+        maxSelectedItems: Int? = nil
     ) {
         self.type = Self.type.rawValue
         self.placeholder = placeholder

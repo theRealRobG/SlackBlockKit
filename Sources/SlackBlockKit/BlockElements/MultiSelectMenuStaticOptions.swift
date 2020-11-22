@@ -40,7 +40,7 @@ struct MultiSelectMenuStaticOptions: BlockElement, InputBlockElement, SectionBlo
         optionGroups: [OptionGroupObject]? = nil,
         initialOptions: [OptionObject]? = nil,
         confirm: ConfirmationDialogObject? = nil,
-        maxSelectedItems: Int? = 1
+        maxSelectedItems: Int? = nil
     ) {
         self.type = Self.type.rawValue
         self.placeholder = placeholder

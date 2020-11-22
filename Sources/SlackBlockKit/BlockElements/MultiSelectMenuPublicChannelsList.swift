@@ -31,7 +31,7 @@ struct MultiSelectMenuPublicChannelsList: BlockElement, InputBlockElement, Secti
         actionId: String,
         initialChannels: [String]? = nil,
         confirm: ConfirmationDialogObject? = nil,
-        maxSelectedItems: Int? = 1
+        maxSelectedItems: Int? = nil
     ) {
         self.type = Self.type.rawValue
         self.placeholder = placeholder

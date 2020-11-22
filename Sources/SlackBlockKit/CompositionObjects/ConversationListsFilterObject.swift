@@ -15,8 +15,8 @@ public struct ConversationListsFilterObject: Codable {
     
     public init(
         include: [ConversationType]? = nil,
-        excludeExternalSharedChannels: Bool? = false,
-        excludeBotUsers: Bool? = false
+        excludeExternalSharedChannels: Bool? = nil,
+        excludeBotUsers: Bool? = nil
     ) {
         self.include = include
         self.excludeExternalSharedChannels = excludeExternalSharedChannels

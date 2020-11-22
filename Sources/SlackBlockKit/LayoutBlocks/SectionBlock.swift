@@ -31,10 +31,23 @@ public struct SectionBlock: LayoutBlock {
     public let accessory: SectionBlockElement?
     
     public init(
-        text: TextObject?,
-        blockId: String?,
-        fields: [TextObject]?,
-        accessory: SectionBlockElement?
+        text: TextObject,
+        blockId: String? = nil,
+        fields: [TextObject]? = nil,
+        accessory: SectionBlockElement? = nil
+    ) {
+        self.type = Self.type.rawValue
+        self.text = text
+        self.blockId = blockId
+        self.fields = fields
+        self.accessory = accessory
+    }
+    
+    public init(
+        text: TextObject? = nil,
+        blockId: String? = nil,
+        fields: [TextObject],
+        accessory: SectionBlockElement? = nil
     ) {
         self.type = Self.type.rawValue
         self.text = text

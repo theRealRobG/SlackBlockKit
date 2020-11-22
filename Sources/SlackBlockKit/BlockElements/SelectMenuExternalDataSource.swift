@@ -39,7 +39,7 @@ struct SelectMenuExternalDataSource: BlockElement, ActionsBlockElement, InputBlo
         placeholder: TextObject,
         actionId: String,
         initialOption: OptionObject? = nil,
-        minQueryLength: Int? = 3,
+        minQueryLength: Int? = nil,
         confirm: ConfirmationDialogObject? = nil
     ) {
         self.type = Self.type.rawValue

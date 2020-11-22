@@ -42,7 +42,7 @@ struct SelectMenuConversationsList: BlockElement, ActionsBlockElement, InputBloc
         placeholder: TextObject,
         actionId: String,
         initialConversation: String? = nil,
-        defaultToCurrentConversation: Bool? = false,
+        defaultToCurrentConversation: Bool? = nil,
         confirm: ConfirmationDialogObject? = nil,
         responseUrlEnabled: Bool? = nil,
         filter: ConversationListsFilterObject? = nil
