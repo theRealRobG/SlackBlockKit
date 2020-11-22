@@ -8,7 +8,7 @@ public protocol SectionBlockElement: BlockElement {}
 ///   - `Modals`
 ///   - `Messages`
 ///   - `Home tabs`
-public struct SectionBlock: LayoutBlock {
+public struct SectionBlock: LayoutBlock, Equatable {
     public static let type = LayoutBlockType.section
     /// The type of block. For a section block, `type` will always be `section`.
     public let type: String
@@ -85,6 +85,15 @@ public struct SectionBlock: LayoutBlock {
         if let accessory = accessory {
             try container.encode(AnyBlockElement(accessory), forKey: .accessory)
         }
+    }
+    
+    public static func == (lhs: SectionBlock, rhs: SectionBlock) -> Bool {
+        return
+            lhs.type == rhs.type &&
+            lhs.text == rhs.text &&
+            lhs.blockId == rhs.blockId &&
+            lhs.fields == rhs.fields &&
+            isEqual(lhs: lhs.accessory, rhs: rhs.accessory)
     }
     
     public enum CodingKeys: String, CodingKey {

@@ -5,7 +5,7 @@
 ///   - `Modals`
 ///   - `Messages`
 ///   - `Home tabs`
-public struct HeaderBlock: LayoutBlock {
+public struct HeaderBlock: LayoutBlock, Equatable {
     public static let type = LayoutBlockType.header
     /// The type of block. For this block, `type` will always be `header`.
     public let type: String

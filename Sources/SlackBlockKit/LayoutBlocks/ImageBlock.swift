@@ -4,7 +4,7 @@
 ///   - `Modals`
 ///   - `Messages`
 ///   - `Home tabs`
-public struct ImageBlock: LayoutBlock {
+public struct ImageBlock: LayoutBlock, Equatable {
     public static let type = LayoutBlockType.image
     /// The type of block. For an image block, `type` is always `image`.
     public let type: String

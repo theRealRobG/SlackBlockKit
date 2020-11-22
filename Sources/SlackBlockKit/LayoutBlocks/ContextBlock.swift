@@ -6,7 +6,7 @@ public protocol ContextBlockElement: BlockElement {}
 ///   - `Modals`
 ///   - `Messages`
 ///   - `Home tabs`
-public struct ContextBlock: LayoutBlock {
+public struct ContextBlock: LayoutBlock, Equatable {
     public static let type = LayoutBlockType.context
     /// The type of block. For a context block, `type` is always `context`.
     public let type: String
@@ -51,6 +51,14 @@ public struct ContextBlock: LayoutBlock {
         try container.encode(type, forKey: .type)
         try container.encode(elements.map(AnyBlockElement.init), forKey: .elements)
         try container.encodeIfPresent(blockId, forKey: .blockId)
+    }
+    
+    public static func == (lhs: ContextBlock, rhs: ContextBlock) -> Bool {
+        guard lhs.elements.count == rhs.elements.count else { return false }
+        for (index, element) in lhs.elements.enumerated() {
+            guard isEqual(lhs: element, rhs: rhs.elements[index]) else { return false }
+        }
+        return lhs.type == rhs.type && lhs.blockId == rhs.blockId
     }
     
     public enum CodingKeys: String, CodingKey {

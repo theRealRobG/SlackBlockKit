@@ -7,7 +7,7 @@ public protocol InputBlockElement: BlockElement {}
 /// Available in surfaces:
 ///   - `Modals`
 ///   - `Home tabs`
-public struct InputBlock: LayoutBlock {
+public struct InputBlock: LayoutBlock, Equatable {
     public static let type = LayoutBlockType.input
     /// The type of block. For an input block, `type` is always `input`.
     public let type: String
@@ -79,6 +79,17 @@ public struct InputBlock: LayoutBlock {
         try container.encodeIfPresent(blockId, forKey: .blockId)
         try container.encodeIfPresent(hint, forKey: .hint)
         try container.encodeIfPresent(optional, forKey: .optional)
+    }
+    
+    public static func == (lhs: InputBlock, rhs: InputBlock) -> Bool {
+        return
+            lhs.type == rhs.type &&
+            lhs.label == rhs.label &&
+            isEqual(lhs: lhs.element, rhs: rhs.element) &&
+            lhs.dispatchAction == rhs.dispatchAction &&
+            lhs.blockId == rhs.blockId &&
+            lhs.hint == rhs.hint &&
+            lhs.optional == rhs.optional
     }
     
     public enum CodingKeys: String, CodingKey {

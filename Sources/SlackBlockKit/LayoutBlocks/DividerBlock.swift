@@ -5,7 +5,7 @@
 ///   - `Modals`
 ///   - `Messages`
 ///   - `Home tabs`
-public struct DividerBlock: LayoutBlock {
+public struct DividerBlock: LayoutBlock, Equatable {
     public static let type = LayoutBlockType.divider
     ///     The type of block. For a divider block, `type` is always `divider`.
     public let type: String

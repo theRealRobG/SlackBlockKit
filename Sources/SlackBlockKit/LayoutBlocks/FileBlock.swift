@@ -3,7 +3,7 @@
 ///
 /// Appears in surfaces:
 ///   - `Messages`
-public struct FileBlock: LayoutBlock {
+public struct FileBlock: LayoutBlock, Equatable {
     public static let type = LayoutBlockType.file
     /// The type of block. For a file block, `type` is always `file`.
     public let type: String

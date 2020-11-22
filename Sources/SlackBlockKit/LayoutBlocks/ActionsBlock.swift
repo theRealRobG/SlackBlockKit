@@ -6,7 +6,7 @@ public protocol ActionsBlockElement: BlockElement {}
 ///   - `Modals`
 ///   - `Messages`
 ///   - `Home tabs`
-public struct ActionsBlock: LayoutBlock {
+public struct ActionsBlock: LayoutBlock, Equatable {
     public static let type = LayoutBlockType.actions
     /// The type of block. For an actions block, `type` is always `actions`.
     public let type: String
@@ -53,6 +53,14 @@ public struct ActionsBlock: LayoutBlock {
         try container.encode(type, forKey: .type)
         try container.encode(elements.map(AnyBlockElement.init), forKey: .elements)
         try container.encodeIfPresent(blockId, forKey: .blockId)
+    }
+    
+    public static func == (lhs: ActionsBlock, rhs: ActionsBlock) -> Bool {
+        guard lhs.elements.count == rhs.elements.count else { return false }
+        for (index, element) in lhs.elements.enumerated() {
+            guard isEqual(lhs: element, rhs: rhs.elements[index]) else { return false }
+        }
+        return lhs.type == rhs.type && lhs.blockId == rhs.blockId
     }
     
     public enum CodingKeys: String, CodingKey {
