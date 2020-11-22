@@ -14,7 +14,7 @@ public struct ButtonElement: BlockElement, ActionsBlockElement, SectionBlockElem
     /// An identifier for this action. You can use this when you receive an interaction
     /// payload to identify the source of the action. Should be unique among all other
     /// `action_ids` in the containing block. Maximum length for this field is 255 characters.
-    public let actionId: String
+    public let actionId: String?
     /// A URL to load in the user's browser when the button is clicked. Maximum length for
     /// this field is 3000 characters. If you're using `url`, you'll still receive an
     /// interaction payload and will need to send an acknowledgement response.
@@ -37,7 +37,7 @@ public struct ButtonElement: BlockElement, ActionsBlockElement, SectionBlockElem
     
     public init(
         text: TextObject,
-        actionId: String,
+        actionId: String? = nil,
         url: String? = nil,
         value: String? = nil,
         style: ButtonStyle? = nil,
