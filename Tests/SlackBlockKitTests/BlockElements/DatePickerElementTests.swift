@@ -14,15 +14,7 @@ private let datePickerElement = """
 }
 """
 
-class DatePickerElementTests: XCTestCase {
-    var jsonEncoder: JSONEncoder!
-    var jsonDecoder: JSONDecoder!
-    
-    override func setUp() {
-        jsonEncoder = JSONEncoder()
-        jsonDecoder = JSONDecoder()
-    }
-    
+class DatePickerElementTests: BlockElementTestCase {
     func test_datePickerElement() {
         let expectedDatePicker = DatePickerElement(
             actionId: "datepicker123",
@@ -33,15 +25,6 @@ class DatePickerElementTests: XCTestCase {
             initialDate: "1990-04-28"
         )
         
-        do {
-            // test encode
-            let json = try jsonEncoder.encodeAsString(expectedDatePicker)
-            AssertJSONEqual(json, datePickerElement)
-            // test decode
-            let actualDatePickerElement = try jsonDecoder.decode(DatePickerElement.self, from: datePickerElement)
-            XCTAssertEqual(expectedDatePicker, actualDatePickerElement)
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        testCodableEquality(block: expectedDatePicker, jsonString: datePickerElement)
     }
 }

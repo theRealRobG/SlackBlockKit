@@ -5,7 +5,7 @@
 /// Works with block types:
 ///   - `Section`
 ///   - `Context`
-public struct ImageElement: BlockElement, ContextBlockElement, SectionBlockElement {
+public struct ImageElement: BlockElement, ContextBlockElement, SectionBlockElement, Equatable {
     public static let type = BlockElementType.image
     /// The type of element. In this case `type` is always `image`.
     public let type: String

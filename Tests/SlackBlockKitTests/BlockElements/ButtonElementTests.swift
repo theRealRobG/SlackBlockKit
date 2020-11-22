@@ -37,15 +37,7 @@ private let linkButton = """
 }
 """
 
-class ButtonElementTests: XCTestCase {
-    var jsonEncoder: JSONEncoder!
-    var jsonDecoder: JSONDecoder!
-    
-    override func setUp() {
-        jsonEncoder = JSONEncoder()
-        jsonDecoder = JSONDecoder()
-    }
-    
+class ButtonElementTests: BlockElementTestCase {
     func test_regularInteractiveButton() {
         let expectedButton = ButtonElement(
             text: TextObject(
@@ -56,16 +48,7 @@ class ButtonElementTests: XCTestCase {
             value: "click_me_123"
         )
         
-        do {
-            // test encode
-            let json = try jsonEncoder.encodeAsString(expectedButton)
-            AssertJSONEqual(json, regularInteractiveButton)
-            // test decode
-            let buttonElement = try jsonDecoder.decode(ButtonElement.self, from: regularInteractiveButton)
-            XCTAssertEqual(expectedButton, buttonElement)
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        testCodableEquality(block: expectedButton, jsonString: regularInteractiveButton)
     }
     
     func test_buttonWithAPrimaryStyleAttribute() {
@@ -79,16 +62,7 @@ class ButtonElementTests: XCTestCase {
             style: .primary
         )
         
-        do {
-            // test encode
-            let json = try jsonEncoder.encodeAsString(expectedButton)
-            AssertJSONEqual(json, buttonWithAPrimaryStyleAttribute)
-            // test decode
-            let buttonElement = try jsonDecoder.decode(ButtonElement.self, from: buttonWithAPrimaryStyleAttribute)
-            XCTAssertEqual(expectedButton, buttonElement)
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        testCodableEquality(block: expectedButton, jsonString: buttonWithAPrimaryStyleAttribute)
     }
     
     func test_linkButton() {
@@ -101,15 +75,6 @@ class ButtonElementTests: XCTestCase {
             url: "https://api.slack.com/block-kit"
         )
         
-        do {
-            // test encode
-            let json = try jsonEncoder.encodeAsString(expectedButton)
-            AssertJSONEqual(json, linkButton)
-            // test decode
-            let buttonElement = try jsonDecoder.decode(ButtonElement.self, from: linkButton)
-            XCTAssertEqual(expectedButton, buttonElement)
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        testCodableEquality(block: expectedButton, jsonString: linkButton)
     }
 }

@@ -32,15 +32,7 @@ private let groupOfCheckboxes = """
 }
 """
 
-class CheckboxGroupsTests: XCTestCase {
-    var jsonEncoder: JSONEncoder!
-    var jsonDecoder: JSONDecoder!
-    
-    override func setUp() {
-        jsonEncoder = JSONEncoder()
-        jsonDecoder = JSONDecoder()
-    }
-    
+class CheckboxGroupsTests: BlockElementTestCase {
     func test_groupOfCheckboxes() {
         let expectedCheckbox = CheckboxGroups(
             actionId: "this_is_an_action_id",
@@ -71,15 +63,6 @@ class CheckboxGroupsTests: XCTestCase {
             ]
         )
         
-        do {
-            // test encode
-            let json = try jsonEncoder.encodeAsString(expectedCheckbox)
-            AssertJSONEqual(json, groupOfCheckboxes)
-            // test decode
-            let checkboxElement = try jsonDecoder.decode(CheckboxGroups.self, from: groupOfCheckboxes)
-            XCTAssertEqual(expectedCheckbox, checkboxElement)
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        testCodableEquality(block: expectedCheckbox, jsonString: groupOfCheckboxes)
     }
 }
