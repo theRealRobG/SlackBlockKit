@@ -1,3 +1,4 @@
+// https://stackoverflow.com/a/44473156/7039100
 struct AnyBlockElement: Codable {
     let element: BlockElement
     
