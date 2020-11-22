@@ -9,7 +9,7 @@
 /// Works with block types:
 ///   - `Section`
 ///   - `Input`
-struct MultiSelectMenuExternalDataSource: BlockElement, InputBlockElement, SectionBlockElement {
+public struct MultiSelectMenuExternalDataSource: BlockElement, InputBlockElement, SectionBlockElement {
     public static let type = BlockElementType.multiExternalSelect
     /// The type of element. In this case `type` is always `multi_external_select`.
     public let type: String

@@ -10,7 +10,12 @@ class BlockElementTestCase: XCTestCase {
         jsonDecoder = JSONDecoder()
     }
     
-    func testCodableEquality<BlockType: BlockElement & Equatable>(block: BlockType, jsonString: String) {
+    func testCodableEquality<BlockType: BlockElement & Equatable>(
+        block: BlockType,
+        jsonString: String,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
         do {
             // test encode
             let json = try jsonEncoder.encodeAsString(block)

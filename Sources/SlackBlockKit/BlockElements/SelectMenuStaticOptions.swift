@@ -5,7 +5,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-struct SelectMenuStaticOptions: BlockElement, ActionsBlockElement, InputBlockElement, SectionBlockElement {
+public struct SelectMenuStaticOptions: BlockElement, ActionsBlockElement, InputBlockElement, SectionBlockElement {
     public static let type = BlockElementType.staticSelect
     /// The type of element. In this case `type` is always `static_select`.
     public let type: String
