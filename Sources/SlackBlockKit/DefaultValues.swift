@@ -7,4 +7,6 @@ public struct DefaultValues {
     public static let excludeBotUsersDefault = false
     public static let dispatchActionDefault = false
     public static let optionalDefault = false
+    public static let clearOnCloseDefault = false
+    public static let notifyOnCloseDefault = false
 }
