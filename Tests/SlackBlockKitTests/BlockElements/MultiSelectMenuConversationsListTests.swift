@@ -11,7 +11,7 @@ private let conversationsListMultiSelect = """
 }
 """
 
-class MultiSelectMenuConversationsListTests: BlockElementTestCase {
+class MultiSelectMenuConversationsListTests: BlockTestCase {
     func test_conversationsListMultiSelect() {
         let expectedMultiSelect = MultiSelectMenuConversationsList(
             placeholder: TextObject(

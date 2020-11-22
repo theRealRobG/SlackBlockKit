@@ -9,7 +9,7 @@ private let imageExample = """
 }
 """
 
-class ImageElementTests: BlockElementTestCase {
+class ImageElementTests: BlockTestCase {
     func test_imageExample() {
         let expectedImageElement = ImageElement(
             imageUrl: "http://placekitten.com/700/500",

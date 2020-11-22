@@ -13,7 +13,7 @@ private let timePickerElevenForty = """
 }
 """
 
-class TimePickerElementTests: BlockElementTestCase {
+class TimePickerElementTests: BlockTestCase {
     func test_timePickerElevenForty() {
         let expectedTimePicker = TimePickerElement(
             actionId: "timepicker123",

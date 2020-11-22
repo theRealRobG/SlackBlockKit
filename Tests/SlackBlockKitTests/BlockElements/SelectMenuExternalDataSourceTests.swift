@@ -13,7 +13,7 @@ private let externalSourceSelect = """
 }
 """
 
-class SelectMenuExternalDataSourceTests: BlockElementTestCase {
+class SelectMenuExternalDataSourceTests: BlockTestCase {
     func test_externalSourceSelect() {
         let expectedSelect = SelectMenuExternalDataSource(
             placeholder: TextObject(

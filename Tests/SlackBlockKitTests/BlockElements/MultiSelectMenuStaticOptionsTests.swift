@@ -35,7 +35,7 @@ private let staticMultiSelectMenu = """
 }
 """
 
-class MultiSelectMenuStaticOptionsTests: BlockElementTestCase {
+class MultiSelectMenuStaticOptionsTests: BlockTestCase {
     func test_staticMultiSelectMenu() {
         let expectedStaticMultiSelect = MultiSelectMenuStaticOptions(
             placeholder: TextObject(

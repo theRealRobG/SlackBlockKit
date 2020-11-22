@@ -12,7 +12,7 @@ private let userListSelect = """
 }
 """
 
-class SelectMenuUserListTests: BlockElementTestCase {
+class SelectMenuUserListTests: BlockTestCase {
     func test_userListSelect() {
         let expectedSelect = SelectMenuUserList(
             placeholder: TextObject(

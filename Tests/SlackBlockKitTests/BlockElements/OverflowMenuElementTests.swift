@@ -45,7 +45,7 @@ private let overflowMenu = """
 }
 """
 
-class OverflowMenuElementTests: BlockElementTestCase {
+class OverflowMenuElementTests: BlockTestCase {
     func test_overflowMenu() {
         let expectedOverflowMenu = OverflowMenuElement(
             actionId: "overflow",

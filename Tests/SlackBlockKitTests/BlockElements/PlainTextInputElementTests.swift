@@ -12,7 +12,7 @@ private let plainTextInputElement = """
 }
 """
 
-class PlainTextInputElementTests: BlockElementTestCase {
+class PlainTextInputElementTests: BlockTestCase {
     func test_plainTextInputElement() {
         let expectedInputElement = PlainTextInputElement(
             actionId: "plain_input",

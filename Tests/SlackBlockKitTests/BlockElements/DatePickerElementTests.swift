@@ -13,7 +13,7 @@ private let datePickerElement = """
 }
 """
 
-class DatePickerElementTests: BlockElementTestCase {
+class DatePickerElementTests: BlockTestCase {
     func test_datePickerElement() {
         let expectedDatePicker = DatePickerElement(
             actionId: "datepicker123",

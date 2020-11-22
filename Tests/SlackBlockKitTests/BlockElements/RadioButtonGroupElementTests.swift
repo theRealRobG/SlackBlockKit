@@ -31,7 +31,7 @@ private let radioButtons = """
 }
 """
 
-class RadioButtonGroupElementTests: BlockElementTestCase {
+class RadioButtonGroupElementTests: BlockTestCase {
     func test_radioButtons() {
         let expectedRadioButtons = RadioButtonGroupElement(
             actionId: "this_is_an_action_id",

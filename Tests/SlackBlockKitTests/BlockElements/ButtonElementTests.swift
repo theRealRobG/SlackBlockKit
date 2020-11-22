@@ -36,7 +36,7 @@ private let linkButton = """
 }
 """
 
-class ButtonElementTests: BlockElementTestCase {
+class ButtonElementTests: BlockTestCase {
     func test_regularInteractiveButton() {
         let expectedButton = ButtonElement(
             text: TextObject(

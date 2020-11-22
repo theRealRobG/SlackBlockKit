@@ -31,7 +31,7 @@ private let groupOfCheckboxes = """
 }
 """
 
-class CheckboxGroupsTests: BlockElementTestCase {
+class CheckboxGroupsTests: BlockTestCase {
     func test_groupOfCheckboxes() {
         let expectedCheckbox = CheckboxGroups(
             actionId: "this_is_an_action_id",

@@ -12,7 +12,7 @@ private let channelsListSelect = """
 }
 """
 
-class MultiSelectMenuPublicChannelsListTests: BlockElementTestCase {
+class MultiSelectMenuPublicChannelsListTests: BlockTestCase {
     func test_channelsListSelect() {
         let expectedMultiSelect = MultiSelectMenuPublicChannelsList(
             placeholder: TextObject(

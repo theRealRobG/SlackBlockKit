@@ -13,7 +13,7 @@ private let externalDataSourceSelect = """
 }
 """
 
-class MultiSelectMenuExternalDataSourceTests: BlockElementTestCase {
+class MultiSelectMenuExternalDataSourceTests: BlockTestCase {
     func test_externalDataSourceSelect() {
         let expectedMultiSelect = MultiSelectMenuExternalDataSource(
             placeholder: TextObject(

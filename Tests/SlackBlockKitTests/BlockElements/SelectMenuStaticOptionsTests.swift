@@ -35,7 +35,7 @@ private let staticSelectMenu = """
 }
 """
 
-class SelectMenuStaticOptionsTests: BlockElementTestCase {
+class SelectMenuStaticOptionsTests: BlockTestCase {
     func test_staticSelectMenu() {
         let expectedSelectMenu = SelectMenuStaticOptions(
             placeholder: TextObject(
