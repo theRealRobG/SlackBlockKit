@@ -9,7 +9,7 @@
 /// Works with block types:
 ///   - `Section`
 ///   - `Actions`
-public struct OverflowMenuElement: BlockElement, ActionsBlockElement {
+public struct OverflowMenuElement: BlockElement, ActionsBlockElement, SectionBlockElement {
     public static let type = BlockElementType.overflow
     /// The type of element. In this case `type` is always `overflow`.
     public let type: String

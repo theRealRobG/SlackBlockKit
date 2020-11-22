@@ -8,7 +8,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-public struct TimePickerElement: BlockElement, ActionsBlockElement, InputBlockElement {
+public struct TimePickerElement: BlockElement, ActionsBlockElement, InputBlockElement, SectionBlockElement {
     public static let type = BlockElementType.timepicker
     /// The type of element. In this case `type` is always `timepicker`.
     public let type: String

@@ -4,7 +4,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-public struct DatePickerElement: BlockElement, ActionsBlockElement, InputBlockElement {
+public struct DatePickerElement: BlockElement, ActionsBlockElement, InputBlockElement, SectionBlockElement {
     public static let type = BlockElementType.datepicker
     /// The type of element. In this case `type` is always `datepicker`.
     public let type: String

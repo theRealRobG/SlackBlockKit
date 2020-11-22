@@ -4,7 +4,7 @@
 /// Works with block types:
 ///   - `Section`
 ///   - `Input`
-struct MultiSelectMenuStaticOptions: BlockElement, InputBlockElement {
+struct MultiSelectMenuStaticOptions: BlockElement, InputBlockElement, SectionBlockElement {
     public static let type = BlockElementType.multiStaticSelect
     /// The type of element. In this case `type` is always `multi_static_select`.
     public let type: String

@@ -5,7 +5,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-public struct RadioButtonGroupElement: BlockElement, ActionsBlockElement, InputBlockElement {
+public struct RadioButtonGroupElement: BlockElement, ActionsBlockElement, InputBlockElement, SectionBlockElement {
     public static let type = BlockElementType.radioButtons
     /// The type of element. In this case `type` is always `radio_buttons`.
     public let type: String

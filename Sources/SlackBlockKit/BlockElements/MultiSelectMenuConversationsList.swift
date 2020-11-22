@@ -5,7 +5,7 @@
 /// Works with block types:
 ///   - `Section`
 ///   - `Input`
-struct MultiSelectMenuConversationsList: BlockElement, InputBlockElement {
+struct MultiSelectMenuConversationsList: BlockElement, InputBlockElement, SectionBlockElement {
     public static let type = BlockElementType.multiConversationsSelect
     /// The type of element. In this case `type` is always `multi_conversations_select`.
     public let type: String
