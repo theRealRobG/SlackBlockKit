@@ -1,6 +1,6 @@
 /// An object containing some text, formatted either as `plain_text` or using `mrkdwn`,
 /// our [Slack's] proprietary contribution to the much beloved Markdown standard.
-public struct TextObject: BlockElement, ContextBlockElement {
+public struct TextObject: BlockElement, ContextBlockElement, Equatable {
     /// `TextObject.type` is problematic as it does not actually have a static single type like
     /// all other `BlockElement`. Instead, for type in this scenario, it provides the default
     /// type for the object, which is `plain_text`.

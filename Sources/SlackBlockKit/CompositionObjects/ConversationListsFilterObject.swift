@@ -1,6 +1,6 @@
 /// Provides a way to filter the list of options in a conversations
 /// select menu or conversations multi-select menu.
-public struct ConversationListsFilterObject: Codable {
+public struct ConversationListsFilterObject: Codable, Equatable {
     /// Indicates which type of conversations should be *included* in the list.
     /// When this field is provided, any conversations that do not match will be excluded
     ///

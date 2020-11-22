@@ -1,6 +1,6 @@
 /// Determines when a plain-text input element will return a `block_actions`
 /// interaction payload.
-public struct DispatchActionConfiguration: Codable {
+public struct DispatchActionConfiguration: Codable, Equatable {
     /// An array of interaction types that you would like to receive a `block_actions`
     /// payload for.
     ///

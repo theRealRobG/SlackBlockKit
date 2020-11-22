@@ -1,7 +1,7 @@
 /// An object that defines a dialog that provides a confirmation step to any
 /// interactive element. This dialog will ask the user to confirm their action
 /// by offering a confirm and deny buttons.
-public struct ConfirmationDialogObject: Codable {
+public struct ConfirmationDialogObject: Codable, Equatable {
     /// A `plain_text`-only text object that defines the dialog's title.
     /// Maximum length for this field is 100 characters.
     public let title: TextObject

@@ -1,6 +1,6 @@
 /// An object that represents a single selectable item in a select menu,
 /// multi-select menu, checkbox group, radio button group, or overflow menu.
-public struct OptionObject: Codable {
+public struct OptionObject: Codable, Equatable {
     /// A text object that defines the text shown in the option on the menu.
     /// Overflow, select, and multi-select menus can only use `plain_text` objects,
     /// while radio buttons and checkboxes can use `mrkdwn` text objects. Maximum
