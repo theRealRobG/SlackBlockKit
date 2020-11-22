@@ -4,7 +4,7 @@
 /// Works with block types:
 ///   - `Section`
 ///   - `Input`
-struct MultiSelectMenuUserList: BlockElement {
+struct MultiSelectMenuUserList: BlockElement, InputBlockElement {
     public static let type = BlockElementType.multiUsersSelect
     /// The type of element. In this case `type` is always `multi_users_select`.
     public let type: String
