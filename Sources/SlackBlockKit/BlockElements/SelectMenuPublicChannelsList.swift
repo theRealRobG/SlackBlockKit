@@ -5,7 +5,7 @@
 ///   - `Section`
 ///   - `Actions`
 ///   - `Input`
-public struct SelectMenuPublicChannelsList: BlockElement, ActionsBlockElement, InputBlockElement, SectionBlockElement {
+public struct SelectMenuPublicChannelsList: BlockElement, ActionsBlockElement, InputBlockElement, SectionBlockElement, Equatable {
     public static let type = BlockElementType.channelsSelect
     /// The type of element. In this case `type` is always `channels_select.
     public let type: String
@@ -33,9 +33,9 @@ public struct SelectMenuPublicChannelsList: BlockElement, ActionsBlockElement, I
     public init(
         placeholder: TextObject,
         actionId: String,
-        initialChannel: String?,
-        confirm: ConfirmationDialogObject?,
-        responseUrlEnabled: Bool?
+        initialChannel: String? = nil,
+        confirm: ConfirmationDialogObject? = nil,
+        responseUrlEnabled: Bool? = nil
     ) {
         self.type = Self.type.rawValue
         self.placeholder = placeholder
