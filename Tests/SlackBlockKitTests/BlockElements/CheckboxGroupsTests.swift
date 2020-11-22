@@ -1,5 +1,4 @@
 import SlackBlockKit
-import XCTest
 
 // https://api.slack.com/reference/block-kit/block-elements#checkboxes__example
 private let groupOfCheckboxes = """
@@ -62,7 +61,6 @@ class CheckboxGroupsTests: BlockElementTestCase {
                 )
             ]
         )
-        
         testCodableEquality(block: expectedCheckbox, jsonString: groupOfCheckboxes)
     }
 }

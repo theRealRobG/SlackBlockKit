@@ -1,5 +1,4 @@
 import SlackBlockKit
-import XCTest
 
 // https://api.slack.com/reference/block-kit/block-elements#users_multi_select__example
 private let usersListSelect = """

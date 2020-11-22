@@ -1,5 +1,4 @@
 import SlackBlockKit
-import XCTest
 
 // https://api.slack.com/reference/block-kit/block-elements#datepicker__example
 private let datePickerElement = """
@@ -24,7 +23,6 @@ class DatePickerElementTests: BlockElementTestCase {
             ),
             initialDate: "1990-04-28"
         )
-        
         testCodableEquality(block: expectedDatePicker, jsonString: datePickerElement)
     }
 }

@@ -1,5 +1,4 @@
 import SlackBlockKit
-import XCTest
 
 // https://api.slack.com/reference/block-kit/block-elements#button__examples
 private let regularInteractiveButton = """
@@ -47,7 +46,6 @@ class ButtonElementTests: BlockElementTestCase {
             actionId: "button",
             value: "click_me_123"
         )
-        
         testCodableEquality(block: expectedButton, jsonString: regularInteractiveButton)
     }
     
@@ -61,7 +59,6 @@ class ButtonElementTests: BlockElementTestCase {
             value: "click_me_123",
             style: .primary
         )
-        
         testCodableEquality(block: expectedButton, jsonString: buttonWithAPrimaryStyleAttribute)
     }
     
@@ -74,7 +71,6 @@ class ButtonElementTests: BlockElementTestCase {
             actionId: "button",
             url: "https://api.slack.com/block-kit"
         )
-        
         testCodableEquality(block: expectedButton, jsonString: linkButton)
     }
 }

@@ -1,5 +1,4 @@
 import SlackBlockKit
-import XCTest
 
 // https://api.slack.com/reference/block-kit/block-elements#image__example
 private let imageExample = """
@@ -16,7 +15,6 @@ class ImageElementTests: BlockElementTestCase {
             imageUrl: "http://placekitten.com/700/500",
             altText: "Multiple cute kittens"
         )
-        
         testCodableEquality(block: expectedImageElement, jsonString: imageExample)
     }
 }

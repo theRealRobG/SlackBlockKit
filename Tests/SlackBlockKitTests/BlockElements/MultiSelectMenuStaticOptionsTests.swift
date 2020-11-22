@@ -1,5 +1,4 @@
 import SlackBlockKit
-import XCTest
 
 // https://api.slack.com/reference/block-kit/block-elements#static_multi_select__example
 private let staticMultiSelectMenu = """
@@ -68,7 +67,6 @@ class MultiSelectMenuStaticOptionsTests: BlockElementTestCase {
                 )
             ]
         )
-        
         testCodableEquality(block: expectedStaticMultiSelect, jsonString: staticMultiSelectMenu)
     }
 }
