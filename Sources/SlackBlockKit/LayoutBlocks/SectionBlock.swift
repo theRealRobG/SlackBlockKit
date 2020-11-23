@@ -82,9 +82,7 @@ public struct SectionBlock: LayoutBlock, Equatable {
         try container.encodeIfPresent(text, forKey: .text)
         try container.encodeIfPresent(blockId, forKey: .blockId)
         try container.encodeIfPresent(fields, forKey: .fields)
-        if let accessory = accessory {
-            try container.encode(AnyBlockElement(accessory), forKey: .accessory)
-        }
+        try container.encodeIfPresent(accessory.map { AnyBlockElement($0) }, forKey: .accessory)
     }
     
     public static func == (lhs: SectionBlock, rhs: SectionBlock) -> Bool {

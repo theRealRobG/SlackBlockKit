@@ -9,4 +9,5 @@ public struct DefaultValues {
     public static let optionalDefault = false
     public static let clearOnCloseDefault = false
     public static let notifyOnCloseDefault = false
+    public static let mrkdwnDefault = true
 }

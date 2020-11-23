@@ -45,4 +45,22 @@ class BlockTestCase: XCTestCase {
             XCTFail(error.localizedDescription)
         }
     }
+    
+    func testCodableEquality(
+        message: MessagePayload,
+        jsonString: String,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        do {
+            // test encode
+            let json = try jsonEncoder.encodeAsString(message)
+            AssertJSONEqual(json, jsonString)
+            // test decode
+            let actualMessage = try jsonDecoder.decode(MessagePayload.self, from: jsonString)
+            XCTAssertEqual(message, actualMessage)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
 }
