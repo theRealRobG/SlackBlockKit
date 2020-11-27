@@ -6,7 +6,7 @@
 ///
 /// If you're using any input blocks, **you must include the** `submit` **field when**
 /// **defining your view.**
-public struct ModalView: View, Equatable {
+public struct ModalView: SlackView, Equatable {
     public static let type = ViewType.modal
     /// The type of view. Set to `modal` for modals and `home` for Home tabs.
     public let type: String

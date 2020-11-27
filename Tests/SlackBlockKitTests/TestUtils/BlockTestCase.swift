@@ -28,7 +28,7 @@ class BlockTestCase: XCTestCase {
         }
     }
     
-    func testCodableEquality<ViewType: View & Equatable>(
+    func testCodableEquality<ViewType: SlackView & Equatable>(
         view: ViewType,
         jsonString: String,
         file: StaticString = #file,

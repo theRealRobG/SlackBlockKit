@@ -2,7 +2,7 @@
 ///
 /// Present each of your users with a unique Home tab just for them, always found in the exact
 /// same place.
-public struct HomeTabView: View, Equatable {
+public struct HomeTabView: SlackView, Equatable {
     public static let type = ViewType.home
     /// /// The type of view. Set to `modal` for modals and `home` for Home tabs.
     public let type: String

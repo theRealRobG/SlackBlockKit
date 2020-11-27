@@ -2,7 +2,7 @@
 ///
 /// To define these views, apps create **view objects** — packages of information that
 /// describe layout, interactivity, and other useful metadata.
-public protocol View: Codable {
+public protocol SlackView: Codable {
     static var type: ViewType { get }
     var type: String { get }
     var blocks: [LayoutBlock] { get }
