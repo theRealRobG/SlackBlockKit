@@ -7,7 +7,7 @@
 /// If you're using any input blocks, **you must include the** `submit` **field when**
 /// **defining your view.**
 public struct ModalView: SlackView, Equatable {
-    public static let type = ViewType.modal
+    public static let type = SlackViewType.modal
     /// The type of view. Set to `modal` for modals and `home` for Home tabs.
     public let type: String
     /// The title that appears in the top-left of the modal. Must be a `plain_text` text

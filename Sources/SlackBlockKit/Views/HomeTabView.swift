@@ -3,7 +3,7 @@
 /// Present each of your users with a unique Home tab just for them, always found in the exact
 /// same place.
 public struct HomeTabView: SlackView, Equatable {
-    public static let type = ViewType.home
+    public static let type = SlackViewType.home
     /// /// The type of view. Set to `modal` for modals and `home` for Home tabs.
     public let type: String
     /// An array of blocks that defines the content of the view. Max of 100 blocks.
