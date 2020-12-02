@@ -8,9 +8,8 @@ on:
 
 jobs:
   build:
-
-    runs-on: macos-latest
-
+    runs-on: ubuntu-latest
+    container: swift:latest
     steps:
     - uses: actions/checkout@v2
     - name: Build
