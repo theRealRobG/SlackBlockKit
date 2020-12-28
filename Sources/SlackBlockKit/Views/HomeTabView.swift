@@ -17,6 +17,14 @@ public struct HomeTabView: SlackView, Equatable {
     public let callbackId: String?
     /// A custom identifier that must be unique for all views on a per-team basis.
     public let externalId: String?
+    /// A dictionary of objects. Each object represents a block in the source view that contained
+    /// stateful, interactive components. Objects are keyed by the `block_id` of those blocks.
+    /// These objects each contain a child object. The child object is keyed by the `action_id` of
+    /// the interactive element in the block. This final child object will contain the `type` and
+    /// submitted `value` of the input block element.
+    ///
+    /// This is primarily defined when decoding an event coming from Slack.
+    public var state: StateValues?
     
     public init(
         blocks: [LayoutBlock],
@@ -42,6 +50,7 @@ public struct HomeTabView: SlackView, Equatable {
         self.privateMetadata = try container.decodeIfPresent(String.self, forKey: .privateMetadata)
         self.callbackId = try container.decodeIfPresent(String.self, forKey: .callbackId)
         self.externalId = try container.decodeIfPresent(String.self, forKey: .externalId)
+        self.state = try container.decodeIfPresent(AnyStateValues.self, forKey: .state)?.mapValues { $0.mapValues(\.value) }
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -51,6 +60,9 @@ public struct HomeTabView: SlackView, Equatable {
         try container.encodeIfPresent(privateMetadata, forKey: .privateMetadata)
         try container.encodeIfPresent(callbackId, forKey: .callbackId)
         try container.encodeIfPresent(externalId, forKey: .externalId)
+        
+        let anyState = state?.mapValues { $0.mapValues(AnyStateValue.init) }
+        try container.encodeIfPresent(anyState, forKey: .state)
     }
     
     public static func == (lhs: HomeTabView, rhs: HomeTabView) -> Bool {
@@ -62,7 +74,8 @@ public struct HomeTabView: SlackView, Equatable {
             lhs.type == rhs.type &&
             lhs.privateMetadata == rhs.privateMetadata &&
             lhs.callbackId == rhs.callbackId &&
-            lhs.externalId == rhs.externalId
+            lhs.externalId == rhs.externalId &&
+            lhs.state?.isEqual(to: rhs.state) ?? (rhs.state == nil)
     }
     
     public enum CodingKeys: String, CodingKey {
@@ -71,5 +84,6 @@ public struct HomeTabView: SlackView, Equatable {
         case privateMetadata = "private_metadata"
         case callbackId = "callback_id"
         case externalId = "external_id"
+        case state
     }
 }

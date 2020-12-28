@@ -37,6 +37,14 @@ public struct ModalView: SlackView, Equatable {
     public let notifyOnClose: Bool?
     /// A custom identifier that must be unique for all views on a per-team basis.
     public let externalId: String?
+    /// A dictionary of objects. Each object represents a block in the source view that contained
+    /// stateful, interactive components. Objects are keyed by the `block_id` of those blocks.
+    /// These objects each contain a child object. The child object is keyed by the `action_id` of
+    /// the interactive element in the block. This final child object will contain the `type` and
+    /// submitted `value` of the input block element.
+    ///
+    /// This is primarily defined when decoding an event coming from Slack.
+    public var state: StateValues?
     
     public init(
         title: TextObject,
@@ -77,6 +85,7 @@ public struct ModalView: SlackView, Equatable {
         self.clearOnClose = try container.decodeIfPresent(Bool.self, forKey: .clearOnClose)
         self.notifyOnClose = try container.decodeIfPresent(Bool.self, forKey: .notifyOnClose)
         self.externalId = try container.decodeIfPresent(String.self, forKey: .externalId)
+        self.state = try container.decodeIfPresent(AnyStateValues.self, forKey: .state)?.mapValues { $0.mapValues(\.value) }
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -91,6 +100,9 @@ public struct ModalView: SlackView, Equatable {
         try container.encodeIfPresent(clearOnClose, forKey: .clearOnClose)
         try container.encodeIfPresent(notifyOnClose, forKey: .notifyOnClose)
         try container.encodeIfPresent(externalId, forKey: .externalId)
+        
+        let anyState = state?.mapValues { $0.mapValues(AnyStateValue.init) }
+        try container.encodeIfPresent(anyState, forKey: .state)
     }
     
     public static func == (lhs: ModalView, rhs: ModalView) -> Bool {
@@ -107,7 +119,8 @@ public struct ModalView: SlackView, Equatable {
             lhs.callbackId == rhs.callbackId &&
             lhs.clearOnClose == rhs.clearOnClose &&
             lhs.notifyOnClose == rhs.notifyOnClose &&
-            lhs.externalId == rhs.externalId
+            lhs.externalId == rhs.externalId &&
+            lhs.state?.isEqual(to: rhs.state) ?? (rhs.state == nil)
     }
     
     public enum CodingKeys: String, CodingKey {
@@ -121,5 +134,6 @@ public struct ModalView: SlackView, Equatable {
         case clearOnClose = "clear_on_close"
         case notifyOnClose = "notify_on_close"
         case externalId = "external_id"
+        case state
     }
 }
