@@ -1,4 +1,4 @@
-public struct CheckboxGroupsStateValue: StateValue {
+public struct CheckboxGroupsStateValue: StateValue, Equatable {
     public static let type: StateValueType = .checkboxes
     public let type: String
     public let selectedOptions: [StateValueSelectedOption]

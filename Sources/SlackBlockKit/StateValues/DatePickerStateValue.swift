@@ -1,4 +1,4 @@
-public struct DatePickerStateValue: StateValue {
+public struct DatePickerStateValue: StateValue, Equatable {
     public static let type: StateValueType = .datepicker
     public let type: String
     public let selectedDate: String

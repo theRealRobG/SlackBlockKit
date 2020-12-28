@@ -1,4 +1,4 @@
-public struct PlainTextInputStateValue: StateValue {
+public struct PlainTextInputStateValue: StateValue, Equatable {
     public static let type: StateValueType = .plainTextInput
     public let type: String
     public let value: String?

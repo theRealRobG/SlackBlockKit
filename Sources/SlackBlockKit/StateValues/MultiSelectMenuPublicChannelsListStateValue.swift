@@ -1,4 +1,4 @@
-public struct MultiSelectMenuPublicChannelsListStateValue: StateValue {
+public struct MultiSelectMenuPublicChannelsListStateValue: StateValue, Equatable {
     public static let type: StateValueType = .multiChannelsSelect
     public let type: String
     public let selectedChannels: [String]

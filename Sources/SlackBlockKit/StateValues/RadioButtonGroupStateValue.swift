@@ -1,4 +1,4 @@
-public struct RadioButtonGroupStateValue: StateValue {
+public struct RadioButtonGroupStateValue: StateValue, Equatable {
     public static let type: StateValueType = .radioButtons
     public let type: String
     public let selectedOption: StateValueSelectedOption?

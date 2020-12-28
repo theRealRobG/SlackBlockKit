@@ -1,4 +1,4 @@
-public struct StateValueSelectedOption: Codable {
+public struct StateValueSelectedOption: Codable, Equatable {
     public let text: TextObject
     public let value: String
     public let description: TextObject?

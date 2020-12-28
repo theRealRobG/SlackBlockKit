@@ -1,4 +1,4 @@
-public struct SelectMenuUserListStateValue: StateValue {
+public struct SelectMenuUserListStateValue: StateValue, Equatable {
     public static let type: StateValueType = .usersSelect
     public let type: String
     public let selectedUser: String?

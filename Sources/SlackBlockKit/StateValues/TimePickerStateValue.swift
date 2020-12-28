@@ -1,4 +1,4 @@
-public struct TimePickerStateValue: StateValue {
+public struct TimePickerStateValue: StateValue, Equatable {
     public static let type: StateValueType = .timepicker
     public let type: String
     public let selectedTime: String
