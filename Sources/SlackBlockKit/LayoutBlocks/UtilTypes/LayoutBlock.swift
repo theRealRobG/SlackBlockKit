@@ -6,18 +6,6 @@ public protocol LayoutBlock: Codable {
 }
 
 public func isEqual(lhs: LayoutBlock?, rhs: LayoutBlock?) -> Bool {
-    switch lhs {
-    case .none:
-        switch rhs {
-        case .none: return true
-        case .some: return false
-        }
-    case .some:
-        switch rhs {
-        case .none: return false
-        case .some: break
-        }
-    }
     guard let lhs = lhs, let rhs = rhs else { return false }
     
     switch Swift.type(of: lhs).type {
