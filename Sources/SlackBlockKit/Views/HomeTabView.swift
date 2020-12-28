@@ -56,7 +56,7 @@ public struct HomeTabView: SlackView, Equatable {
     public static func == (lhs: HomeTabView, rhs: HomeTabView) -> Bool {
         guard lhs.blocks.count == rhs.blocks.count else { return false }
         for (index, block) in lhs.blocks.enumerated() {
-            guard isEqual(lhs: block, rhs: rhs.blocks[index]) else { return false }
+            guard block.isEqual(to: rhs.blocks[index]) else { return false }
         }
         return
             lhs.type == rhs.type &&

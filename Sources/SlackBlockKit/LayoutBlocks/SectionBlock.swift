@@ -91,7 +91,7 @@ public struct SectionBlock: LayoutBlock, Equatable {
             lhs.text == rhs.text &&
             lhs.blockId == rhs.blockId &&
             lhs.fields == rhs.fields &&
-            isEqual(lhs: lhs.accessory, rhs: rhs.accessory)
+            lhs.accessory?.isEqual(to: rhs.accessory) ?? (rhs.accessory == nil)
     }
     
     public enum CodingKeys: String, CodingKey {

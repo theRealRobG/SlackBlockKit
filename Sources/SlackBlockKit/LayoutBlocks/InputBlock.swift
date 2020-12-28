@@ -85,7 +85,7 @@ public struct InputBlock: LayoutBlock, Equatable {
         return
             lhs.type == rhs.type &&
             lhs.label == rhs.label &&
-            isEqual(lhs: lhs.element, rhs: rhs.element) &&
+            lhs.element.isEqual(to: rhs.element) &&
             lhs.dispatchAction == rhs.dispatchAction &&
             lhs.blockId == rhs.blockId &&
             lhs.hint == rhs.hint &&

@@ -272,7 +272,7 @@ public struct SecondaryMessageAttachment: Codable, Equatable {
     public static func == (lhs: SecondaryMessageAttachment, rhs: SecondaryMessageAttachment) -> Bool {
         guard lhs.blocks?.count == rhs.blocks?.count else { return false }
         if let lhsBlocks = lhs.blocks {
-            guard lhsBlocks.enumerated().allSatisfy({ isEqual(lhs: $1, rhs: rhs.blocks?[$0]) }) else { return false }
+            guard lhsBlocks.enumerated().allSatisfy({ $1.isEqual(to: rhs.blocks?[$0]) }) else { return false }
         }
         return
             lhs.color == rhs.color &&
