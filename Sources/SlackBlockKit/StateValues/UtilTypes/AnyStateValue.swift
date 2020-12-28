@@ -21,3 +21,5 @@ struct AnyStateValue: Codable {
         case value
     }
 }
+
+typealias AnyStateValues = [String: [String: AnyStateValue]]
