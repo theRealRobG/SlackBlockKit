@@ -4,10 +4,12 @@ public enum StateValueType: String, Codable {
     case plainTextInput = "plain_text_input"
     case radioButtons = "radio_buttons"
     case timepicker
+    // menu select types
     case conversationsSelect = "conversations_select"
     case usersSelect = "users_select"
     case staticSelect = "static_select"
     case channelsSelect = "channels_select"
+    // menu multi-select types
     case multiConversationsSelect = "multi_conversations_select"
     case multiStaticSelect = "multi_static_select"
     case multiChannelsSelect = "multi_channels_select"
@@ -17,6 +19,9 @@ public enum StateValueType: String, Codable {
         switch self {
         case .checkboxes: return CheckboxGroupsStateValue.self
         case .datepicker: return DatePickerStateValue.self
+        case .plainTextInput: return PlainTextInputStateValue.self
+        case .radioButtons: return RadioButtonGroupStateValue.self
+        case .timepicker: return TimePickerStateValue.self
         case .conversationsSelect: return SelectMenuConversationsListStateValue.self
         case .usersSelect: return SelectMenuUserListStateValue.self
         case .staticSelect: return SelectMenuStaticOptionsStateValue.self
@@ -25,9 +30,6 @@ public enum StateValueType: String, Codable {
         case .multiStaticSelect: return MultiSelectMenuStaticOptionsStateValue.self
         case .multiChannelsSelect: return MultiSelectMenuPublicChannelsListStateValue.self
         case .multiUsersSelect: return MultiSelectMenuUserListStateValue.self
-        case .plainTextInput: return PlainTextInputStateValue.self
-        case .radioButtons: return RadioButtonGroupStateValue.self
-        case .timepicker: return TimePickerStateValue.self
         }
     }
 }
