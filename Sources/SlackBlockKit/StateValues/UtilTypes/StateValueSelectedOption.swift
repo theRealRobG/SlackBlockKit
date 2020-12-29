@@ -3,7 +3,7 @@ public struct StateValueSelectedOption: Codable, Equatable {
     public let value: String
     public let description: TextObject?
     
-    public init(text: TextObject, value: String, description: TextObject?) {
+    public init(text: TextObject, value: String, description: TextObject? = nil) {
         self.text = text
         self.value = value
         self.description = description

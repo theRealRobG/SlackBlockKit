@@ -24,7 +24,7 @@ public struct HomeTabView: SlackView, Equatable {
     /// submitted `value` of the input block element.
     ///
     /// This is primarily defined when decoding an event coming from Slack.
-    public var state: StateValues?
+    public var state: ViewState?
     
     public init(
         blocks: [LayoutBlock],
@@ -50,7 +50,7 @@ public struct HomeTabView: SlackView, Equatable {
         self.privateMetadata = try container.decodeIfPresent(String.self, forKey: .privateMetadata)
         self.callbackId = try container.decodeIfPresent(String.self, forKey: .callbackId)
         self.externalId = try container.decodeIfPresent(String.self, forKey: .externalId)
-        self.state = try container.decodeIfPresent(AnyStateValues.self, forKey: .state)?.mapValues { $0.mapValues(\.value) }
+        self.state = try container.decodeIfPresent(ViewState.self, forKey: .state)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -60,9 +60,7 @@ public struct HomeTabView: SlackView, Equatable {
         try container.encodeIfPresent(privateMetadata, forKey: .privateMetadata)
         try container.encodeIfPresent(callbackId, forKey: .callbackId)
         try container.encodeIfPresent(externalId, forKey: .externalId)
-        
-        let anyState = state?.mapValues { $0.mapValues(AnyStateValue.init) }
-        try container.encodeIfPresent(anyState, forKey: .state)
+        try container.encodeIfPresent(state, forKey: .state)
     }
     
     public static func == (lhs: HomeTabView, rhs: HomeTabView) -> Bool {
@@ -75,7 +73,7 @@ public struct HomeTabView: SlackView, Equatable {
             lhs.privateMetadata == rhs.privateMetadata &&
             lhs.callbackId == rhs.callbackId &&
             lhs.externalId == rhs.externalId &&
-            lhs.state?.isEqual(to: rhs.state) ?? (rhs.state == nil)
+            lhs.state == rhs.state
     }
     
     public enum CodingKeys: String, CodingKey {
