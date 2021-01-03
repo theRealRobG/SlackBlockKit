@@ -44,7 +44,12 @@ public struct ModalView: SlackView, Equatable {
     /// submitted `value` of the input block element.
     ///
     /// This is primarily defined when decoding an event coming from Slack.
-    public var state: StateValues?
+    public var state: ViewState?
+    /// A unique value which is optionally accepted in views.update and views.publish API calls.
+    /// When provided to those APIs, the `hash` is validated such that only the most recent view can
+    /// be updated. This should be used to ensure the correct view is being updated when updates
+    /// are happening asynchronously.
+    public var hash: String?
     
     public init(
         title: TextObject,
@@ -85,7 +90,8 @@ public struct ModalView: SlackView, Equatable {
         self.clearOnClose = try container.decodeIfPresent(Bool.self, forKey: .clearOnClose)
         self.notifyOnClose = try container.decodeIfPresent(Bool.self, forKey: .notifyOnClose)
         self.externalId = try container.decodeIfPresent(String.self, forKey: .externalId)
-        self.state = try container.decodeIfPresent(AnyStateValues.self, forKey: .state)?.mapValues { $0.mapValues(\.value) }
+        self.state = try container.decodeIfPresent(ViewState.self, forKey: .state)
+        self.hash = try container.decodeIfPresent(String.self, forKey: .hash)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -100,9 +106,8 @@ public struct ModalView: SlackView, Equatable {
         try container.encodeIfPresent(clearOnClose, forKey: .clearOnClose)
         try container.encodeIfPresent(notifyOnClose, forKey: .notifyOnClose)
         try container.encodeIfPresent(externalId, forKey: .externalId)
-        
-        let anyState = state?.mapValues { $0.mapValues(AnyStateValue.init) }
-        try container.encodeIfPresent(anyState, forKey: .state)
+        try container.encodeIfPresent(state, forKey: .state)
+        try container.encodeIfPresent(hash, forKey: .hash)
     }
     
     public static func == (lhs: ModalView, rhs: ModalView) -> Bool {
@@ -120,7 +125,8 @@ public struct ModalView: SlackView, Equatable {
             lhs.clearOnClose == rhs.clearOnClose &&
             lhs.notifyOnClose == rhs.notifyOnClose &&
             lhs.externalId == rhs.externalId &&
-            lhs.state?.isEqual(to: rhs.state) ?? (rhs.state == nil)
+            lhs.state == rhs.state &&
+            lhs.hash == rhs.hash
     }
     
     public enum CodingKeys: String, CodingKey {
@@ -135,5 +141,6 @@ public struct ModalView: SlackView, Equatable {
         case notifyOnClose = "notify_on_close"
         case externalId = "external_id"
         case state
+        case hash
     }
 }

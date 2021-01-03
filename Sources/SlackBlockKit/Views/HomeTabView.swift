@@ -25,6 +25,11 @@ public struct HomeTabView: SlackView, Equatable {
     ///
     /// This is primarily defined when decoding an event coming from Slack.
     public var state: ViewState?
+    /// A unique value which is optionally accepted in views.update and views.publish API calls.
+    /// When provided to those APIs, the `hash` is validated such that only the most recent view can
+    /// be updated. This should be used to ensure the correct view is being updated when updates
+    /// are happening asynchronously.
+    public var hash: String?
     
     public init(
         blocks: [LayoutBlock],
@@ -51,6 +56,7 @@ public struct HomeTabView: SlackView, Equatable {
         self.callbackId = try container.decodeIfPresent(String.self, forKey: .callbackId)
         self.externalId = try container.decodeIfPresent(String.self, forKey: .externalId)
         self.state = try container.decodeIfPresent(ViewState.self, forKey: .state)
+        self.hash = try container.decodeIfPresent(String.self, forKey: .hash)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -61,6 +67,7 @@ public struct HomeTabView: SlackView, Equatable {
         try container.encodeIfPresent(callbackId, forKey: .callbackId)
         try container.encodeIfPresent(externalId, forKey: .externalId)
         try container.encodeIfPresent(state, forKey: .state)
+        try container.encodeIfPresent(hash, forKey: .hash)
     }
     
     public static func == (lhs: HomeTabView, rhs: HomeTabView) -> Bool {
@@ -73,7 +80,8 @@ public struct HomeTabView: SlackView, Equatable {
             lhs.privateMetadata == rhs.privateMetadata &&
             lhs.callbackId == rhs.callbackId &&
             lhs.externalId == rhs.externalId &&
-            lhs.state == rhs.state
+            lhs.state == rhs.state &&
+            lhs.hash == rhs.hash
     }
     
     public enum CodingKeys: String, CodingKey {
@@ -83,5 +91,6 @@ public struct HomeTabView: SlackView, Equatable {
         case callbackId = "callback_id"
         case externalId = "external_id"
         case state
+        case hash
     }
 }

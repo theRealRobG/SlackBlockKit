@@ -99,6 +99,7 @@ private let homeTabViewWithState = """
       }
     }
   ],
+  "hash": "12345",
   "state": {
     "values": {
       "5GC": {
@@ -226,6 +227,7 @@ class HomeTabViewTests: BlockTestCase {
                 ]
             ]
         )
+        expectedHomeTab.hash = "12345"
         testCodableEquality(view: expectedHomeTab, jsonString: homeTabViewWithState)
     }
 }

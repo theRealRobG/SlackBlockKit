@@ -6,4 +6,5 @@ public protocol SlackView: Codable {
     static var type: SlackViewType { get }
     var type: String { get }
     var blocks: [LayoutBlock] { get }
+    var hash: String? { get set }
 }
