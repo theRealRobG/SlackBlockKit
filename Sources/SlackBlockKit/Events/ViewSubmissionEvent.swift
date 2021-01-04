@@ -1,3 +1,6 @@
+// TODO - ViewSubmission and ViewClosed are actually actions (not events). In a separate PR I will
+// separate them out from the other events.
+
 /// Received when a user submits a view in a modal.
 public struct ViewSubmissionEvent: SlackEventWrapper, Equatable {
     public static let type: SlackEventWrapperType = .viewSubmission
