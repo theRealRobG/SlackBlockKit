@@ -13,12 +13,6 @@ public struct SlackEventCallback: SlackEventWrapper {
     /// The unique identifier for the workspace/team where this event occurred.
     /// Example: `T461EG9ZZ`
     public let teamId: String
-    /// The unique identifier for the application this event is intended for. Your application's
-    /// ID can be found in the URL of the your application console. If your Request URL manages
-    /// multiple applications, use this field along with the `token` field to validate and route
-    /// incoming requests.
-    /// Example: `A4ZFV49KK`
-    public let apiAppId: String
     /// Contains the inner set of fields representing the event that's happening.
     public let event: SlackEvent
     /// A unique identifier for this specific event, globally unique across all workspaces.
@@ -41,25 +35,36 @@ public struct SlackEventCallback: SlackEventWrapper {
     /// `apps.event.authorizations.list` method to obtain a full list of installations of your app
     /// that this event is visible to.
     public let eventContext: String?
+    /// The unique identifier for the application this event is intended for. Your application's
+    /// ID can be found in the URL of the your application console. If your Request URL manages
+    /// multiple applications, use this field along with the `token` field to validate and route
+    /// incoming requests.
+    /// Example: `A4ZFV49KK`
+    public var apiAppId: String?
+    
+    // The following may also appear
+    public var isEnterpriseInstall: Bool?
+    public var responseUrls: [String]?
+    public var triggerId: String?
     
     public init(
         token: String,
         teamId: String,
-        apiAppId: String,
         event: SlackEvent,
         eventId: String,
         eventTime: Int,
-        authedUsers: [String]?,
-        authorizations: SlackAuthorizations?,
-        eventContext: String?
+        apiAppId: String? = nil,
+        authedUsers: [String]? = nil,
+        authorizations: SlackAuthorizations? = nil,
+        eventContext: String? = nil
     ) {
         self.type = Self.type.rawValue
         self.token = token
         self.teamId = teamId
-        self.apiAppId = apiAppId
         self.event = event
         self.eventId = eventId
         self.eventTime = eventTime
+        self.apiAppId = apiAppId
         self.authedUsers = authedUsers
         self.authorizations = authorizations
         self.eventContext = eventContext
@@ -70,13 +75,16 @@ public struct SlackEventCallback: SlackEventWrapper {
         self.type = try container.decode(String.self, forKey: .type)
         self.token = try container.decode(String.self, forKey: .token)
         self.teamId = try container.decode(String.self, forKey: .teamId)
-        self.apiAppId = try container.decode(String.self, forKey: .apiAppId)
         self.event = try container.decode(AnySlackEvent.self, forKey: .event).event
         self.eventId = try container.decode(String.self, forKey: .eventId)
         self.eventTime = try container.decode(Int.self, forKey: .eventTime)
         self.authedUsers = try container.decodeIfPresent([String].self, forKey: .authedUsers)
         self.authorizations = try container.decodeIfPresent(SlackAuthorizations.self, forKey: .authorizations)
         self.eventContext = try container.decodeIfPresent(String.self, forKey: .eventContext)
+        self.apiAppId = try container.decodeIfPresent(String.self, forKey: .apiAppId)
+        self.isEnterpriseInstall = try container.decodeIfPresent(Bool.self, forKey: .isEnterpriseInstall)
+        self.responseUrls = try container.decodeIfPresent([String].self, forKey: .responseUrls)
+        self.triggerId = try container.decodeIfPresent(String.self, forKey: .triggerId)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -84,25 +92,31 @@ public struct SlackEventCallback: SlackEventWrapper {
         try container.encode(type, forKey: .type)
         try container.encode(token, forKey: .token)
         try container.encode(teamId, forKey: .teamId)
-        try container.encode(apiAppId, forKey: .apiAppId)
         try container.encode(AnySlackEvent(event), forKey: .event)
         try container.encode(eventId, forKey: .eventId)
         try container.encode(eventTime, forKey: .eventTime)
+        try container.encodeIfPresent(apiAppId, forKey: .apiAppId)
         try container.encodeIfPresent(authedUsers, forKey: .authedUsers)
         try container.encodeIfPresent(authorizations, forKey: .authorizations)
         try container.encodeIfPresent(eventContext, forKey: .eventContext)
+        try container.encodeIfPresent(isEnterpriseInstall, forKey: .isEnterpriseInstall)
+        try container.encodeIfPresent(responseUrls, forKey: .responseUrls)
+        try container.encodeIfPresent(triggerId, forKey: .triggerId)
     }
     
     public enum CodingKeys: String, CodingKey {
         case type
         case token
         case teamId = "team_id"
-        case apiAppId = "api_app_id"
         case event
         case eventId = "event_id"
         case eventTime = "event_time"
         case authedUsers = "authed_users"
         case authorizations
         case eventContext = "event_context"
+        case apiAppId = "api_app_id"
+        case isEnterpriseInstall = "is_enterprise_install"
+        case responseUrls = "response_urls"
+        case triggerId = "trigger_id"
     }
 }

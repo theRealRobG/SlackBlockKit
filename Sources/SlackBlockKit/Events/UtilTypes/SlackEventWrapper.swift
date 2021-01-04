@@ -3,4 +3,9 @@
 public protocol SlackEventWrapper: Codable {
     static var type: SlackEventWrapperType { get }
     var type: String { get }
+    var token: String { get }
+    var apiAppId: String? { get set }
+    var isEnterpriseInstall: Bool? { get set }
+    var responseUrls: [String]?  { get set }
+    var triggerId: String? { get set }
 }

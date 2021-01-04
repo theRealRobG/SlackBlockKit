@@ -23,9 +23,25 @@ public struct URLVerificationEvent: SlackEventWrapper {
     /// this value.
     public let challenge: String
     
+    // The following may also appear
+    public var apiAppId: String?
+    public var isEnterpriseInstall: Bool?
+    public var responseUrls: [String]?
+    public var triggerId: String?
+    
     public init(token: String, challenge: String) {
         self.type = Self.type.rawValue
         self.token = token
         self.challenge = challenge
+    }
+    
+    public enum CodingKeys: String, CodingKey {
+        case type
+        case token
+        case challenge
+        case apiAppId = "api_app_id"
+        case isEnterpriseInstall = "is_enterprise_install"
+        case responseUrls = "response_urls"
+        case triggerId = "trigger_id"
     }
 }
