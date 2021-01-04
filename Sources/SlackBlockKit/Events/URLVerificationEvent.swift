@@ -5,7 +5,7 @@
 ///
 /// Once you receive the event, verify the request's authenticity and then respond with the
 /// challenge attribute value.
-public struct URLVerificationEvent: SlackEventWrapper {
+public struct URLVerificationEvent: SlackEventWrapper, Equatable {
     public static let type: SlackEventWrapperType = .urlVerification
     /// This payload is similarly formatted to other event types you'll encounter in the Events
     /// API. To help you differentiate url verification requests form other event types, we
