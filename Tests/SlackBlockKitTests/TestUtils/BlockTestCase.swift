@@ -81,4 +81,22 @@ class BlockTestCase: XCTestCase {
             XCTFail(error.localizedDescription)
         }
     }
+    
+    func testCodableEquality<EventWrapperType: SlackEventWrapper & Equatable>(
+        event: EventWrapperType,
+        jsonString: String,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        do {
+            // test encode
+            let json = try jsonEncoder.encodeAsString(event)
+            AssertJSONEqual(json, jsonString)
+            // test decode
+            let actualEvent = try jsonDecoder.decode(Swift.type(of: event), from: jsonString)
+            XCTAssertEqual(event, actualEvent)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
 }

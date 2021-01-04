@@ -1,0 +1,159 @@
+import SlackBlockKit
+
+private let viewSubmission = """
+{
+  "type": "view_submission",
+  "team": {
+    "id": "T01ER49MBU2",
+    "domain": "spaceforapptesting"
+  },
+  "user": {
+    "id": "U01ERACBV43",
+    "username": "robert.galluccio",
+    "name": "robert.galluccio",
+    "team_id": "T01ER49MBU2"
+  },
+  "api_app_id": "A02",
+  "token": "Shh_its_a_seekrit",
+  "trigger_id": "123456789.123456789",
+  "view": {
+    "id": "V1234567890",
+    "team_id": "T01ER49MBU2",
+    "type": "modal",
+    "blocks": [
+      {
+        "type": "input",
+        "block_id": "zCB",
+        "label": {
+          "type": "plain_text",
+          "text": "Label",
+          "emoji": true
+        },
+        "optional": false,
+        "dispatch_action": false,
+        "element": {
+          "type": "plain_text_input",
+          "action_id": "plain_text_input-action",
+          "dispatch_action_config": {
+            "trigger_actions_on": [
+              "on_enter_pressed"
+            ]
+          }
+        }
+      }
+    ],
+    "private_metadata": "",
+    "callback_id": "",
+    "state": {
+      "values": {
+        "zCB": {
+          "plain_text_input-action": {
+            "type": "plain_text_input",
+            "value": "Test input."
+          }
+        }
+      }
+    },
+    "hash": "1609700657.dL8yRBeO",
+    "title": {
+      "type": "plain_text",
+      "text": "My App",
+      "emoji": true
+    },
+    "clear_on_close": false,
+    "notify_on_close": false,
+    "close": {
+      "type": "plain_text",
+      "text": "Cancel",
+      "emoji": true
+    },
+    "submit": {
+      "type": "plain_text",
+      "text": "Submit",
+      "emoji": true
+    },
+    "root_view_id": "V1234567890",
+    "app_id": "A02",
+    "external_id": "",
+    "app_installed_team_id": "T01ER49MBU2",
+    "bot_id": "B00"
+  },
+  "response_urls": [],
+  "is_enterprise_install": false
+}
+"""
+
+class ViewSubmissionEventTests: BlockTestCase {
+    func test_viewSubmissionEvent() {
+        var modalView = ModalView(
+            title: TextObject(
+                type: .plainText,
+                text: "My App",
+                emoji: true
+            ),
+            blocks: [
+                InputBlock(
+                    label: TextObject(
+                        type: .plainText,
+                        text: "Label",
+                        emoji: true
+                    ),
+                    element: PlainTextInputElement(
+                        actionId: "plain_text_input-action",
+                        dispatchActionConfig: DispatchActionConfiguration(
+                            triggerActionsOn: [.onEnterPressed]
+                        )
+                    ),
+                    dispatchAction: false,
+                    blockId: "zCB",
+                    optional: false
+                )
+            ],
+            close: TextObject(
+                type: .plainText,
+                text: "Cancel",
+                emoji: true
+            ),
+            submit: TextObject(
+                type: .plainText,
+                text: "Submit",
+                emoji: true
+            ),
+            privateMetadata: "",
+            callbackId: "",
+            clearOnClose: false,
+            notifyOnClose: false,
+            externalId: ""
+        )
+        modalView.state = ViewState(
+            values: [
+                "zCB": [
+                    "plain_text_input-action": PlainTextInputStateValue(value: "Test input.")
+                ]
+            ]
+        )
+        modalView.hash = "1609700657.dL8yRBeO"
+        modalView.appId = "A02"
+        modalView.appInstalledTeamId = "T01ER49MBU2"
+        modalView.botId = "B00"
+        modalView.id = "V1234567890"
+        modalView.rootViewId = "V1234567890"
+        modalView.teamId = "T01ER49MBU2"
+        var viewSubmissionEvent = ViewSubmissionEvent(
+            token: "Shh_its_a_seekrit",
+            team: SlackTeam(id: "T01ER49MBU2", domain: "spaceforapptesting"),
+            user: SlackUser(
+                id: "U01ERACBV43",
+                username: "robert.galluccio",
+                name: "robert.galluccio",
+                teamId: "T01ER49MBU2"
+            ),
+            view: modalView
+        )
+        viewSubmissionEvent.apiAppId = "A02"
+        viewSubmissionEvent.isEnterpriseInstall = false
+        viewSubmissionEvent.responseUrls = []
+        viewSubmissionEvent.triggerId = "123456789.123456789"
+        testCodableEquality(event: viewSubmissionEvent, jsonString: viewSubmission)
+    }
+}
