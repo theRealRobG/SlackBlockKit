@@ -1,5 +1,5 @@
 /// Also referred to as the "outer event", or the JSON object containing the event that happened itself.
-public struct SlackEventCallback: SlackEventWrapper {
+public struct SlackEventCallback: SlackEventWrapper, Equatable {
     public static let type: SlackEventWrapperType = .eventCallback
     /// This reflects the type of callback you're receiving. In this scenario it will be
     /// `event_callback`. The `event` fields "inner event" will also contain a `type` field
@@ -111,6 +111,23 @@ public struct SlackEventCallback: SlackEventWrapper {
         try container.encodeIfPresent(isEnterpriseInstall, forKey: .isEnterpriseInstall)
         try container.encodeIfPresent(responseUrls, forKey: .responseUrls)
         try container.encodeIfPresent(triggerId, forKey: .triggerId)
+    }
+    
+    public static func == (lhs: SlackEventCallback, rhs: SlackEventCallback) -> Bool {
+        return lhs.type == rhs.type &&
+            lhs.token == rhs.token &&
+            lhs.teamId == rhs.teamId &&
+            lhs.event.isEqual(to: rhs.event) &&
+            lhs.eventId == rhs.eventId &&
+            lhs.eventTime == rhs.eventTime &&
+            lhs.apiAppId == rhs.apiAppId &&
+            lhs.authedUsers == rhs.authedUsers &&
+            lhs.authedTeams == rhs.authedTeams &&
+            lhs.authorizations == rhs.authorizations &&
+            lhs.eventContext == rhs.eventContext &&
+            lhs.isEnterpriseInstall == rhs.isEnterpriseInstall &&
+            lhs.responseUrls == rhs.responseUrls &&
+            lhs.triggerId == rhs.triggerId
     }
     
     public enum CodingKeys: String, CodingKey {

@@ -4,7 +4,7 @@
 /// defined. `authorizations` describes one of the installations that this event is visible to.
 /// You'll receive a single event for a piece of data intended for multiple users in a workspace,
 /// rather than a message per user.
-public struct SlackAuthorizations: Codable {
+public struct SlackAuthorizations: Codable, Equatable {
     public let enterpriseId: String?
     public let teamId: String?
     public let userId: String?
