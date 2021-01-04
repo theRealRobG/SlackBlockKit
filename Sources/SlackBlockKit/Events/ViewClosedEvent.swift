@@ -1,3 +1,4 @@
+/// Optionally received when a user dismisses a modal.
 public struct ViewClosedEvent: SlackEventWrapper, Equatable {
     public static let type: SlackEventWrapperType = .viewClosed
     /// Helps identify the source of the payload. The `type` for this interaction is `view_closed`.
