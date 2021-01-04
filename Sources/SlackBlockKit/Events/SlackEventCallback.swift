@@ -24,6 +24,11 @@ public struct SlackEventCallback: SlackEventWrapper {
     /// those users. You'll receive a single event for a piece of data intended for multiple users
     /// in a workspace, rather than a message per user.
     public let authedUsers: [String]?
+    /// An array of string-based team IDs, now truncated to a single workspace. Each member of the
+    /// collection represents a workspace that has installed your application/bot and indicates the
+    /// described event would be visible to that workspace. You'll receive a single event for a piece
+    /// of data intended for multiple workspaces, rather than a message per workspace.
+    public let authedTeams: [String]?
     /// An installation of your app. Installations are defined by a combination of the installing
     /// Enterprise Grid org, workspace, and user (represented by `enterprise_id`, `team_id`, and
     /// `user_id` inside this field)—note that installations may only have one or two, not all three,
@@ -55,6 +60,7 @@ public struct SlackEventCallback: SlackEventWrapper {
         eventTime: Int,
         apiAppId: String? = nil,
         authedUsers: [String]? = nil,
+        authedTeams: [String]? = nil,
         authorizations: SlackAuthorizations? = nil,
         eventContext: String? = nil
     ) {
@@ -66,6 +72,7 @@ public struct SlackEventCallback: SlackEventWrapper {
         self.eventTime = eventTime
         self.apiAppId = apiAppId
         self.authedUsers = authedUsers
+        self.authedTeams = authedTeams
         self.authorizations = authorizations
         self.eventContext = eventContext
     }
@@ -79,6 +86,7 @@ public struct SlackEventCallback: SlackEventWrapper {
         self.eventId = try container.decode(String.self, forKey: .eventId)
         self.eventTime = try container.decode(Int.self, forKey: .eventTime)
         self.authedUsers = try container.decodeIfPresent([String].self, forKey: .authedUsers)
+        self.authedTeams = try container.decodeIfPresent([String].self, forKey: .authedTeams)
         self.authorizations = try container.decodeIfPresent(SlackAuthorizations.self, forKey: .authorizations)
         self.eventContext = try container.decodeIfPresent(String.self, forKey: .eventContext)
         self.apiAppId = try container.decodeIfPresent(String.self, forKey: .apiAppId)
@@ -97,6 +105,7 @@ public struct SlackEventCallback: SlackEventWrapper {
         try container.encode(eventTime, forKey: .eventTime)
         try container.encodeIfPresent(apiAppId, forKey: .apiAppId)
         try container.encodeIfPresent(authedUsers, forKey: .authedUsers)
+        try container.encodeIfPresent(authedTeams, forKey: .authedTeams)
         try container.encodeIfPresent(authorizations, forKey: .authorizations)
         try container.encodeIfPresent(eventContext, forKey: .eventContext)
         try container.encodeIfPresent(isEnterpriseInstall, forKey: .isEnterpriseInstall)
@@ -112,6 +121,7 @@ public struct SlackEventCallback: SlackEventWrapper {
         case eventId = "event_id"
         case eventTime = "event_time"
         case authedUsers = "authed_users"
+        case authedTeams = "authed_teams"
         case authorizations
         case eventContext = "event_context"
         case apiAppId = "api_app_id"
