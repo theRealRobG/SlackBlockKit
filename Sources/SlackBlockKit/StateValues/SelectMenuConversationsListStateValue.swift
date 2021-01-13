@@ -4,7 +4,7 @@ public struct SelectMenuConversationsListStateValue: StateValue, Equatable {
     public let selectedConversation: String?
     public let responseUrlEnabled: Bool?
     
-    public init(selectedConversation: String?, responseUrlEnabled: Bool?) {
+    public init(selectedConversation: String?, responseUrlEnabled: Bool? = nil) {
         self.type = Self.type.rawValue
         self.selectedConversation = selectedConversation
         self.responseUrlEnabled = responseUrlEnabled
