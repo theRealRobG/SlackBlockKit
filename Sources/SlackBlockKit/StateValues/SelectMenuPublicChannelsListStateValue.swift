@@ -4,7 +4,7 @@ public struct SelectMenuPublicChannelsListStateValue: StateValue, Equatable {
     public let selectedChannel: String?
     public let responseUrlEnabled: Bool?
     
-    public init(selectedChannel: String?, responseUrlEnabled: Bool?) {
+    public init(selectedChannel: String?, responseUrlEnabled: Bool? = nil) {
         self.type = Self.type.rawValue
         self.selectedChannel = selectedChannel
         self.responseUrlEnabled = responseUrlEnabled

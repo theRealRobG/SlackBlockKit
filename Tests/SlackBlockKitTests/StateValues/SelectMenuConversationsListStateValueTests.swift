@@ -1,21 +1,21 @@
 import SlackBlockKit
 import XCTest
 
-let selectConversationsNoSelection = """
+private let selectConversationsNoSelection = """
 {
   "selected_conversation" : null,
   "type" : "conversations_select"
 }
 """
 
-let selectConversationsWithSelection = """
+private let selectConversationsWithSelection = """
 {
   "selected_conversation" : "U01ERACBV43",
   "type" : "conversations_select"
 }
 """
 
-let selectConversationsWithUrlEnabled = """
+private let selectConversationsWithUrlEnabled = """
 {
   "response_url_enabled" : true,
   "selected_conversation" : "U01ERACBV43",

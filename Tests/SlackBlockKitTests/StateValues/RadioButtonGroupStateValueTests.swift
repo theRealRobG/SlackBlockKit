@@ -1,14 +1,14 @@
 import SlackBlockKit
 import XCTest
 
-let radioGroupNoSelection = """
+private let radioGroupNoSelection = """
 {
   "selected_option" : null,
   "type" : "radio_buttons"
 }
 """
 
-let radioGroupWithSelection = """
+private let radioGroupWithSelection = """
 {
   "selected_option" : {
     "text" : {
