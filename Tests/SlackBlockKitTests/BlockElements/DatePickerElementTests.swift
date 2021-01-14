@@ -21,7 +21,7 @@ class DatePickerElementTests: BlockTestCase {
                 type: .plainText,
                 text: "Select a date"
             ),
-            initialDate: "1990-04-28"
+            initialDate: SlackDate(year: 1990, month: 4, day: 28)
         )
         testCodableEquality(block: expectedDatePicker, jsonString: datePickerElement)
     }

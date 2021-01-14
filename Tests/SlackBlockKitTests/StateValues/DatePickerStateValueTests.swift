@@ -17,7 +17,7 @@ class DatePickerStateValueTests: XCTestCase {
     
     func test_datePicker() throws {
         let datePickerState = try jsonDecoder.decode(DatePickerStateValue.self, from: datePicker)
-        let expectedDatePicker = DatePickerStateValue(selectedDate: "1990-04-28")
+        let expectedDatePicker = DatePickerStateValue(selectedDate: SlackDate(year: 1990, month: 4, day: 28))
         XCTAssertEqual(datePickerState, expectedDatePicker)
     }
 }

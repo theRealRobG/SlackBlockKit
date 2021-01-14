@@ -1,9 +1,9 @@
 public struct DatePickerStateValue: StateValue, Equatable {
     public static let type: StateValueType = .datepicker
     public let type: String
-    public let selectedDate: String
+    public let selectedDate: SlackDate
     
-    public init(selectedDate: String) {
+    public init(selectedDate: SlackDate) {
         self.type = Self.type.rawValue
         self.selectedDate = selectedDate
     }
