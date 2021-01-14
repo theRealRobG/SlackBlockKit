@@ -20,7 +20,12 @@ func AssertJSONEqual(
         let lhsJSONData = try JSONSerialization.data(withJSONObject: lhsJSONObject, options: .sortedKeys)
         let rhsJSONObject = try JSONSerialization.jsonObject(with: rhsData)
         let rhsJSONData = try JSONSerialization.data(withJSONObject: rhsJSONObject, options: .sortedKeys)
-        XCTAssertEqual(lhsJSONData, rhsJSONData, file: file, line: line)
+        
+        guard let lhsJSONString = String(data: lhsJSONData, encoding: .utf8), let rhsJSONString = String(data: rhsJSONData, encoding: .utf8) else {
+            return XCTFail("JSON serialized data was not convertible to String", file: file, line: line)
+        }
+        
+        XCTAssertEqual(lhsJSONString, rhsJSONString, file: file, line: line)
     } catch {
         XCTFail("Problem decoding/encoding JSON: \(error.localizedDescription)", file: file, line: line)
     }

@@ -54,13 +54,14 @@ private let modalView = """
     "text": "Save"
   },
   "private_metadata": "Shhhhhhhh",
-  "callback_id": "view_identifier_12"
+  "callback_id": "view_identifier_12",
+  "hash": "12345"
 }
 """
 
 class ModalViewTests: BlockTestCase {
     func test_modalView() {
-        let expectedModal = ModalView(
+        var expectedModal = ModalView(
             title: TextObject(type: .plainText, text: "Modal title"),
             blocks: [
                 SectionBlock(
@@ -91,6 +92,7 @@ class ModalViewTests: BlockTestCase {
             privateMetadata: "Shhhhhhhh",
             callbackId: "view_identifier_12"
         )
+        expectedModal.hash = "12345"
         testCodableEquality(view: expectedModal, jsonString: modalView)
     }
 }

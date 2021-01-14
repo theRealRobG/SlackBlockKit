@@ -58,7 +58,7 @@ public struct ActionsBlock: LayoutBlock, Equatable {
     public static func == (lhs: ActionsBlock, rhs: ActionsBlock) -> Bool {
         guard lhs.elements.count == rhs.elements.count else { return false }
         for (index, element) in lhs.elements.enumerated() {
-            guard isEqual(lhs: element, rhs: rhs.elements[index]) else { return false }
+            guard element.isEqual(to: rhs.elements[index]) else { return false }
         }
         return lhs.type == rhs.type && lhs.blockId == rhs.blockId
     }

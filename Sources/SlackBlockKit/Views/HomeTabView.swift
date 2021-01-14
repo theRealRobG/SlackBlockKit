@@ -17,6 +17,19 @@ public struct HomeTabView: SlackView, Equatable {
     public let callbackId: String?
     /// A custom identifier that must be unique for all views on a per-team basis.
     public let externalId: String?
+    /// A dictionary of objects. Each object represents a block in the source view that contained
+    /// stateful, interactive components. Objects are keyed by the `block_id` of those blocks.
+    /// These objects each contain a child object. The child object is keyed by the `action_id` of
+    /// the interactive element in the block. This final child object will contain the `type` and
+    /// submitted `value` of the input block element.
+    ///
+    /// This is primarily defined when decoding an event coming from Slack.
+    public var state: ViewState?
+    /// A unique value which is optionally accepted in views.update and views.publish API calls.
+    /// When provided to those APIs, the `hash` is validated such that only the most recent view can
+    /// be updated. This should be used to ensure the correct view is being updated when updates
+    /// are happening asynchronously.
+    public var hash: String?
     
     public init(
         blocks: [LayoutBlock],
@@ -42,6 +55,8 @@ public struct HomeTabView: SlackView, Equatable {
         self.privateMetadata = try container.decodeIfPresent(String.self, forKey: .privateMetadata)
         self.callbackId = try container.decodeIfPresent(String.self, forKey: .callbackId)
         self.externalId = try container.decodeIfPresent(String.self, forKey: .externalId)
+        self.state = try container.decodeIfPresent(ViewState.self, forKey: .state)
+        self.hash = try container.decodeIfPresent(String.self, forKey: .hash)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -51,18 +66,22 @@ public struct HomeTabView: SlackView, Equatable {
         try container.encodeIfPresent(privateMetadata, forKey: .privateMetadata)
         try container.encodeIfPresent(callbackId, forKey: .callbackId)
         try container.encodeIfPresent(externalId, forKey: .externalId)
+        try container.encodeIfPresent(state, forKey: .state)
+        try container.encodeIfPresent(hash, forKey: .hash)
     }
     
     public static func == (lhs: HomeTabView, rhs: HomeTabView) -> Bool {
         guard lhs.blocks.count == rhs.blocks.count else { return false }
         for (index, block) in lhs.blocks.enumerated() {
-            guard isEqual(lhs: block, rhs: rhs.blocks[index]) else { return false }
+            guard block.isEqual(to: rhs.blocks[index]) else { return false }
         }
         return
             lhs.type == rhs.type &&
             lhs.privateMetadata == rhs.privateMetadata &&
             lhs.callbackId == rhs.callbackId &&
-            lhs.externalId == rhs.externalId
+            lhs.externalId == rhs.externalId &&
+            lhs.state == rhs.state &&
+            lhs.hash == rhs.hash
     }
     
     public enum CodingKeys: String, CodingKey {
@@ -71,5 +90,7 @@ public struct HomeTabView: SlackView, Equatable {
         case privateMetadata = "private_metadata"
         case callbackId = "callback_id"
         case externalId = "external_id"
+        case state
+        case hash
     }
 }
