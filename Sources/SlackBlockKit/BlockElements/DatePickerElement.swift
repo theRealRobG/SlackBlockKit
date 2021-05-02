@@ -18,7 +18,7 @@ public struct DatePickerElement: BlockElement, ActionsBlockElement, InputBlockEl
     public let placeholder: TextObject?
     /// The initial date that is selected when the element is loaded. This should be
     /// in the format `YYYY-MM-DD`.
-    public let initialDate: String?
+    public let initialDate: SlackDate?
     /// A confirm object that defines an optional confirmation dialog that appears
     /// after a date is selected.
     public let confirm: ConfirmationDialogObject?
@@ -26,7 +26,7 @@ public struct DatePickerElement: BlockElement, ActionsBlockElement, InputBlockEl
     public init(
         actionId: String,
         placeholder: TextObject? = nil,
-        initialDate: String? = nil,
+        initialDate: SlackDate? = nil,
         confirm: ConfirmationDialogObject? = nil
     ) {
         self.type = Self.type.rawValue
